@@ -574,6 +574,7 @@ svg { display: block; }
 .stack-meta__count { font-family: var(--serif); font-size: 18px; color: var(--texte-clair); }
 .stack-meta__count b { font-weight: 500; font-size: 36px; color: var(--ivoire); }
 .stack-meta__cap { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--accent-clair); }
+.stack-meta__cap:empty { display: none; }
 .stack-nav { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .stack-nav .link-arrow { margin-left: 16px; }
 .stack {
