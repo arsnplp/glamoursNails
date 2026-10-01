@@ -435,7 +435,7 @@ svg { display: block; }
 .tags li:hover { border-color: var(--accent); background: rgba(31, 122, 82, .12); }
 
 /* ---------- Éventail ---------- */
-.engagements { overflow: hidden; padding-bottom: clamp(80px, 9vw, 130px); }
+.engagements { overflow: clip; padding-bottom: clamp(80px, 9vw, 130px); }
 .engagements::before {
   content: ""; position: absolute; inset: 0;
   background: radial-gradient(ellipse 60% 50% at 50% 85%, rgba(31, 122, 82, .16), transparent 70%),
@@ -851,10 +851,22 @@ svg { display: block; }
 .wa-float:hover { background: #25a866; transform: scale(1.08); }
 
 /* ---------- Responsive ---------- */
+/* ---------- Engagements : pile au défilement (mobile) ---------- */
+.eng-rail { position: relative; }
+.fan.is-stack .fan__stage { position: sticky; top: 92px; height: calc(var(--fan-h) + 110px); }
+.fan.is-stack .fan__card { opacity: 1; transform-origin: 50% 100%; will-change: transform, opacity; }
+.fan.is-stack .fan__inner { transition: none; }
+.eng-pace { position: absolute; left: 50%; bottom: 8px; width: 120px; margin-left: -60px; height: 2px; border-radius: 2px; background: rgba(245, 239, 230, .18); overflow: hidden; }
+.eng-pace span { display: block; height: 100%; width: 100%; background: var(--accent-clair); transform: scaleX(0); transform-origin: left; }
+.eng-nudge { position: absolute; left: 50%; bottom: 20px; width: 34px; height: 34px; margin-left: -17px; border-radius: 50%; border: 1px solid rgba(245, 239, 230, .3); display: grid; place-items: center; transition: opacity .4s; animation: nudge 1.8s ease-in-out infinite; }
+.eng-nudge svg { width: 16px; height: 16px; fill: none; stroke: var(--ivoire); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+@keyframes nudge { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(5px); } }
+.fan.is-stack .fan__nav { display: none; }
+
 @media (max-width: 1080px) {
   .nav { display: none; }
   .burger { display: block; }
-  .fan { --fan-w: 250px; --fan-h: 460px; }
+  .fan { --fan-w: 340px; --fan-h: 460px; }
 }
 @media (max-width: 860px) {
   .domaine, .faq__grid, .contact__grid { grid-template-columns: 1fr; }
@@ -888,7 +900,7 @@ svg { display: block; }
   .scroll-hint { display: none; }
   .hero__facts strong { font-size: 28px; }
   .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
-  .fan { --fan-w: 230px; --fan-h: 400px; }
+  .fan { --fan-w: min(320px, calc(100vw - 48px)); --fan-h: 420px; }
   .fan__inner { padding: 24px 22px; }
   .fan__top { margin-bottom: 30px; }
   .fan__card h3 { font-size: 24px; }

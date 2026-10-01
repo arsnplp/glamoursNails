@@ -467,6 +467,9 @@
   function initFan() {
     const root = $('[data-fan]');
     if (!root) return;
+    // Sur téléphone et tablette, l'éventail laisse place à la pile au
+    // défilement (même mécanique que Jolis Nails sur mobile).
+    if (window.matchMedia('(max-width: 860px)').matches) { initEngStack(root); return; }
     const stage = $('.fan__stage', root);
     const cards = $$('.fan__card', stage);
     const n = cards.length;
@@ -720,6 +723,100 @@
       clearTimeout(rt);
       rt = setTimeout(() => { mesurer(); consignes(); }, 120);
     });
+  }
+
+  /* =========================================================
+     Engagements sur mobile : pile épinglée au défilement
+     La scène reste collée à l'écran ; chaque cran de défilement fait
+     s'envoler la carte du dessus par le haut et révèle la suivante.
+     Réglages repris de Jolis Nails : LEAD/HOLD, horloge à bascule 0,5
+     et exposant 1,6, vol à -150 % avec effacement entre 38 % et 66 %.
+     ========================================================= */
+  function initEngStack(root) {
+    const stage = $('.fan__stage', root);
+    const cards = $$('.fan__card', stage);
+    const n = cards.length;
+    const nav = $('.fan__nav', root);
+    if (nav) nav.hidden = true;
+
+    const LEAD = 0.4, HOLD = 0.35, BASCULE = 0.5, FAN = 5;
+    const STEPS = n - 1 + HOLD;
+    const RAIL = STEPS + LEAD;
+
+    // Rail de défilement autour de la scène collante
+    const rail = document.createElement('div');
+    rail.className = 'eng-rail';
+    stage.parentNode.insertBefore(rail, stage);
+    rail.appendChild(stage);
+    const pace = document.createElement('div');
+    pace.className = 'eng-pace';
+    pace.setAttribute('aria-hidden', 'true');
+    const fill = document.createElement('span');
+    pace.appendChild(fill);
+    stage.appendChild(pace);
+    const nudge = document.createElement('div');
+    nudge.className = 'eng-nudge';
+    nudge.setAttribute('aria-hidden', 'true');
+    nudge.innerHTML = '<svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>';
+    stage.appendChild(nudge);
+
+    root.classList.add('is-stack');
+    cards.forEach((c, i) => {
+      c.style.zIndex = String(n - i);
+      c.style.pointerEvents = 'auto';
+      c.classList.toggle('is-front', i === 0);
+      c.setAttribute('aria-hidden', 'false');
+    });
+
+    const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+    let pas = 0, railTop = 0, colle = 0;
+    function mesurer() {
+      pas = Math.round(window.innerHeight * 0.7);
+      rail.style.height = Math.round(RAIL * pas + window.innerHeight * 0.85) + 'px';
+      colle = parseFloat(getComputedStyle(stage).top) || 0;
+      railTop = rail.getBoundingClientRect().top + window.scrollY - colle;
+    }
+    function horloge(t) {
+      const e = Math.floor(t);
+      const b = clamp((t - e) / BASCULE, 0, 1);
+      return e + (1 - Math.pow(1 - b, 1.6));
+    }
+    const etat = cards.map(() => '');
+    function peindre() {
+      // Position relue à chaque image : les sections épinglées plus haut
+      // modifient la hauteur de la page après le montage.
+      railTop = rail.getBoundingClientRect().top + window.scrollY - colle;
+      const p = (window.scrollY - railTop) / pas;
+      const te = clamp(horloge(clamp(p - LEAD, 0, STEPS)), 0, n - 1);
+      cards.forEach((card, i) => {
+        const depth = clamp(i - te, 0, 4);
+        const gone = i < n - 1 ? clamp(te - i, 0, 1) : 0;
+        let y, rot, s, op;
+        if (gone > 0) {
+          y = -150 * gone; rot = -2 * FAN * gone; s = 1 + 0.02 * gone;
+          op = 1 - clamp((gone - 0.38) / 0.28, 0, 1);
+          card.style.transform = `translate3d(0, ${y}%, 0) rotate(${rot}deg) scale(${s})`;
+        } else {
+          y = depth * 16; rot = depth * FAN; s = 1 - depth * 0.02;
+          op = depth > 3 ? clamp(4 - depth, 0, 1) : 1;
+          card.style.transform = `translate3d(0, ${y}px, 0) rotate(${rot}deg) scale(${s})`;
+        }
+        const cle = card.style.transform + '|' + op.toFixed(3);
+        if (etat[i] === cle) return;
+        etat[i] = cle;
+        card.style.opacity = op.toFixed(3);
+        card.style.setProperty('--dim', (depth * 0.12).toFixed(2));
+        card.classList.toggle('is-front', !(depth > 0.5 || gone > 0.05));
+      });
+      fill.style.transform = `scaleX(${(te / (n - 1)).toFixed(4)})`;
+      nudge.style.opacity = String(te < 0.05 ? 1 : 0);
+    }
+    mesurer(); peindre();
+    let raf = null;
+    const onScroll = () => { if (raf) return; raf = requestAnimationFrame(() => { raf = null; peindre(); }); };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => { mesurer(); peindre(); });
+    window.addEventListener('load', () => { mesurer(); peindre(); });
   }
 
   /* =========================================================
