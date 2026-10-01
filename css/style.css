@@ -537,7 +537,7 @@ svg { display: block; }
 .menu__dots { border-bottom: 1px dotted rgba(12, 11, 10, .25); transform: translateY(-4px); min-width: 12px; }
 .menu__time { font-size: 13px; color: var(--texte-sombre); white-space: nowrap; }
 .menu__price { font-family: var(--serif); font-weight: 600; font-size: 24px; white-space: nowrap; min-width: 70px; text-align: right; }
-.tarifs__cta { margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--ligne-sombre); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
+.tarifs__cta { margin-top: 40px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 .tarifs__cta p { margin: 0; color: var(--texte-sombre); }
 .tarifs__cta a:not(.btn) { color: var(--accent); text-underline-offset: 3px; }
 
