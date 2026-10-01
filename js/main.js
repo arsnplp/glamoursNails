@@ -740,8 +740,8 @@
     const ANGLES = [-3, 4, -6, 2, 7, -4, 5, -2];
     let ordre = cards.map((_, i) => i);
     let occupe = false;
-    tot.textContent = String(n).padStart(2, '0');
-    cap.textContent = cards[0].dataset.caption;
+    if (tot) tot.textContent = String(n).padStart(2, '0');
+    if (cap) cap.textContent = cards[0].dataset.caption;
     pile.tabIndex = 0;
 
     gsap.set(cards, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
@@ -761,8 +761,8 @@
         });
       });
       const top = cards[ordre[0]];
-      idx.textContent = String(ordre[0] + 1).padStart(2, '0');
-      if (cap.textContent !== top.dataset.caption) {
+      if (idx) idx.textContent = String(ordre[0] + 1).padStart(2, '0');
+      if (cap && cap.textContent !== top.dataset.caption) {
         gsap.fromTo(cap, { y: 10, autoAlpha: 0 }, { y: 0, autoAlpha: 1, duration: 0.5, ease: 'power2.out' });
         cap.textContent = top.dataset.caption;
       }
@@ -822,8 +822,8 @@
     pile.addEventListener('pointerup', lacher);
     pile.addEventListener('pointercancel', lacher);
 
-    $('[data-stack-next]', root).addEventListener('click', () => jeter(-1));
-    $('[data-stack-prev]', root).addEventListener('click', rappeler);
+    $('[data-stack-next]', root)?.addEventListener('click', () => jeter(-1));
+    $('[data-stack-prev]', root)?.addEventListener('click', rappeler);
     pile.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') { e.preventDefault(); jeter(-1); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); rappeler(); }
