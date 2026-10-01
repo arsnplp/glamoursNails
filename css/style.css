@@ -699,10 +699,19 @@ svg { display: block; }
 [data-masonry-more]:hover .btn__icon { transform: none; }
 [data-masonry-more][aria-expanded="true"]:hover .btn__icon { transform: rotate(180deg); }
 @media (max-width: 1024px) { .masonry-wrap.is-collapsed { max-height: 1000px; } }
-@media (max-width: 640px) { .masonry-wrap.is-collapsed { max-height: 900px; } }
+@media (max-width: 640px) { .masonry-wrap.is-collapsed { max-height: 760px; } }
 @media (max-width: 1280px) { .masonry { column-count: 3; } }
-@media (max-width: 1024px) { .masonry { column-count: 2; } }
-@media (max-width: 640px) { .masonry { column-count: 1; } .real:hover { transform: none; } }
+@media (max-width: 1024px) { .masonry { column-count: 3; column-gap: 12px; } .real { margin-bottom: 12px; } }
+@media (max-width: 640px) {
+  /* Sur téléphone, on garde deux colonnes serrées : même effet de mosaïque que sur ordinateur */
+  .masonry { column-count: 2; column-gap: 8px; }
+  .real { margin-bottom: 8px; border-radius: 12px; }
+  .real.is-in:hover { transform: none; }
+  .real figcaption { padding: 10px; gap: 4px; }
+  .real__who { font-size: 11px; gap: 6px; }
+  .real__who img { width: 22px; height: 22px; border-width: 1.5px; }
+  .real__tag { font-size: 9px; padding: 3px 7px; }
+}
 
 /* ---------- Bande parallaxe ---------- */
 .band { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; isolation: isolate; }
