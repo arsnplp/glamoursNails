@@ -270,7 +270,7 @@
     demarrer();
   } else {
     const heroImg = new Image();
-    heroImg.src = 'assets/img/hero.jpg';
+    heroImg.src = 'image/heanderfond.webp';
     const pret = Promise.all([
       document.fonts ? document.fonts.ready : Promise.resolve(),
       heroImg.decode ? heroImg.decode().catch(() => {}) : Promise.resolve(),
