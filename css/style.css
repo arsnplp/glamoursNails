@@ -1,7 +1,7 @@
 /* =========================================================
    GLAMOUR NAILS — Charte graphique
    Noir profond · Vert émeraude · Blanc ivoire · Vert forêt
-   Titres : Instrument Serif · Texte : Figtree
+   Titres : Cormorant Garamond · Texte : Figtree
    ========================================================= */
 
 :root {
@@ -23,7 +23,7 @@
   --ligne-clair: rgba(245, 239, 230, .14);
   --ligne-sombre: rgba(12, 11, 10, .14);
 
-  --serif: "Instrument Serif", "Iowan Old Style", "Palatino", Georgia, serif;
+  --serif: "Cormorant Garamond", "Cormorant", "Garamond", Georgia, serif;
   --sans: "Figtree", "Helvetica Neue", Arial, sans-serif;
 
   --wrap: 1280px;
@@ -88,9 +88,9 @@ svg { display: block; }
 
 .sec-title, .band__title {
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(42px, 6.2vw, 92px);
-  line-height: 1;
+  font-weight: 500;
+  font-size: clamp(38px, 5.2vw, 78px);
+  line-height: 1.02;
   letter-spacing: -.01em;
   margin: 0;
 }
@@ -240,7 +240,7 @@ svg { display: block; }
   padding-bottom: 3px;
 }
 .brand__text { display: flex; flex-direction: column; line-height: 1.1; }
-.brand__name { font-family: var(--serif); font-size: 20px; letter-spacing: .01em; }
+.brand__name { font-family: var(--serif); font-weight: 600; font-size: 22px; letter-spacing: .01em; }
 .brand__tag { font-size: 9.5px; letter-spacing: .3em; text-transform: uppercase; color: var(--texte-clair); margin-top: 3px; }
 
 .nav { display: flex; gap: 6px; }
@@ -315,14 +315,14 @@ svg { display: block; }
 @keyframes pulse { 70% { box-shadow: 0 0 0 12px rgba(46, 154, 104, 0); } 100% { box-shadow: 0 0 0 0 rgba(46, 154, 104, 0); } }
 .hero__title {
   font-family: var(--serif);
-  font-weight: 400;
-  font-size: clamp(50px, 8.6vw, 138px);
-  line-height: .96;
-  letter-spacing: -.015em;
-  margin: 0 0 32px;
+  font-weight: 500;
+  font-size: clamp(44px, 6.2vw, 96px);
+  line-height: 1.02;
+  letter-spacing: -.01em;
+  margin: 0 0 28px;
   max-width: 20ch;
 }
-.hero__title em { color: var(--ivoire); }
+.hero__title em { color: var(--ivoire); font-weight: 400; }
 .hero__title .accent, .hero__title .accent .char { color: var(--accent-vif); }
 .hero__lead { max-width: 520px; font-size: clamp(17px, 1.35vw, 20px); color: rgba(245, 239, 230, .82); margin: 0 0 40px; }
 .hero__actions { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -362,7 +362,8 @@ svg { display: block; }
 .manifeste__grid { max-width: 1100px; }
 .manifeste__text {
   font-family: var(--serif);
-  font-size: clamp(28px, 3.9vw, 58px);
+  font-weight: 500;
+  font-size: clamp(28px, 3.6vw, 52px);
   line-height: 1.18;
   letter-spacing: -.015em;
   margin: 0 0 56px;
@@ -385,7 +386,7 @@ svg { display: block; }
 .reveal-frame__veil { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,11,10,.08) 0%, rgba(12,11,10,.2) 40%, rgba(12,11,10,.9) 92%); }
 .reveal-frame__quote p { text-shadow: 0 4px 30px rgba(0, 0, 0, .55); }
 .reveal-frame__quote { position: absolute; inset: auto 0 0 0; margin: 0; text-align: center; padding: 0 var(--gutter) clamp(48px, 9vh, 96px); }
-.reveal-frame__quote p { font-family: var(--serif); font-size: clamp(34px, 5.6vw, 88px); line-height: 1.05; letter-spacing: -.02em; margin: 0; color: var(--ivoire); }
+.reveal-frame__quote p { font-family: var(--serif); font-weight: 500; font-size: clamp(32px, 4.8vw, 72px); line-height: 1.05; letter-spacing: -.02em; margin: 0; color: var(--ivoire); }
 .reveal-frame__quote em { color: var(--accent-clair); }
 
 /* ---------- Univers (domaines) ---------- */
@@ -413,7 +414,7 @@ svg { display: block; }
   color: var(--ivoire);
   mix-blend-mode: difference;
 }
-.domaine__title { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -.02em; margin: 0 0 24px; }
+.domaine__title { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -.02em; margin: 0 0 24px; }
 .domaine__body p:not(.kicker) { color: var(--texte-clair); max-width: 460px; margin: 0 0 28px; }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 36px; padding: 0; }
 .tags li { font-size: 13px; padding: 7px 14px; border: 1px solid var(--ligne-clair); border-radius: 999px; color: rgba(245, 239, 230, .85); transition: border-color .3s, background .3s; }
@@ -480,7 +481,7 @@ svg { display: block; }
 .fan__icon svg { width: 20px; height: 20px; fill: none; stroke: var(--accent-clair); stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
 .fan__rule { flex: 1; height: 1px; background: rgba(245, 239, 230, .16); }
 .fan__num { font-family: var(--serif); font-style: italic; font-size: 30px; color: var(--accent-clair); }
-.fan__card h3 { font-family: var(--serif); font-weight: 400; font-size: 27px; line-height: 1.1; margin: 0 0 16px; }
+.fan__card h3 { font-family: var(--serif); font-weight: 600; font-size: 28px; line-height: 1.1; margin: 0 0 16px; }
 .fan__card p { font-size: 15px; line-height: 1.65; color: rgba(245, 239, 230, .66); margin: 0; }
 .fan__card p strong { color: var(--ivoire); font-weight: 500; }
 .fan__nav { display: flex; align-items: center; justify-content: center; gap: 22px; position: relative; z-index: 20; margin-top: 10px; }
@@ -521,7 +522,7 @@ svg { display: block; }
 .panels { position: relative; }
 .panel { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(32px, 6vw, 96px); }
 .panel[hidden] { display: none; }
-.panel__cat { font-family: var(--serif); font-weight: 400; font-style: italic; font-size: 30px; margin: 0 0 18px; color: var(--accent); }
+.panel__cat { font-family: var(--serif); font-weight: 500; font-style: italic; font-size: 32px; margin: 0 0 18px; color: var(--accent); }
 .menu { list-style: none; margin: 0; padding: 0; }
 .panel__cat--next { margin-top: 48px; }
 .menu__note { display: block; font-size: 13px; line-height: 1.45; color: var(--texte-sombre); margin-top: 4px; font-weight: 300; }
@@ -539,7 +540,7 @@ svg { display: block; }
 .menu__name { font-size: 16.5px; font-weight: 400; }
 .menu__dots { border-bottom: 1px dotted rgba(12, 11, 10, .25); transform: translateY(-4px); min-width: 12px; }
 .menu__time { font-size: 13px; color: var(--texte-sombre); white-space: nowrap; }
-.menu__price { font-family: var(--serif); font-size: 22px; white-space: nowrap; min-width: 70px; text-align: right; }
+.menu__price { font-family: var(--serif); font-weight: 600; font-size: 24px; white-space: nowrap; min-width: 70px; text-align: right; }
 .tarifs__cta { margin-top: 72px; padding-top: 40px; border-top: 1px solid var(--ligne-sombre); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 24px; }
 .tarifs__cta p { margin: 0; color: var(--texte-sombre); }
 .tarifs__cta a:not(.btn) { color: var(--accent); text-underline-offset: 3px; }
@@ -596,7 +597,7 @@ svg { display: block; }
   display: flex; flex-direction: column; gap: 18px;
   user-select: none;
 }
-.review blockquote { margin: 0; font-family: var(--serif); font-size: 20px; line-height: 1.4; flex: 1; }
+.review blockquote { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 22px; line-height: 1.4; flex: 1; }
 .review figcaption { font-size: 13px; color: var(--texte-sombre); letter-spacing: .04em; }
 .review figcaption b { font-weight: 500; color: var(--noir); }
 
@@ -617,7 +618,7 @@ svg { display: block; }
   list-style: none; cursor: pointer;
   display: flex; align-items: center; justify-content: space-between; gap: 24px;
   padding: 28px 0;
-  font-family: var(--serif); font-size: clamp(20px, 1.8vw, 26px); line-height: 1.25;
+  font-family: var(--serif); font-weight: 600; font-size: clamp(21px, 1.9vw, 27px); line-height: 1.25;
   transition: color .3s;
 }
 .acc__item summary::-webkit-details-marker { display: none; }
