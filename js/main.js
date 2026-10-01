@@ -355,16 +355,13 @@
       });
     })();
 
-    // Domaines : image et texte se dévoilent de haut en bas
+    // Domaines : les photos s'affichent directement, seul le texte apparaît en douceur
     $$('.domaine').forEach((d) => {
-      const media = $('.domaine__media', d);
       const body = $('.domaine__body', d);
-      const tl = gsap.timeline({ scrollTrigger: { trigger: d, start: 'top 78%', once: true } });
-      tl.fromTo(media, { clipPath: 'inset(0% 0% 100% 0%)' }, { clipPath: 'inset(0% 0% 0% 0%)', duration: 1.3, ease: 'expo.inOut' })
-        .from($('.domaine__img', d), { scale: 1.3, duration: 1.8, ease: 'expo.out' }, 0.2)
-        .from($('.domaine__num', d), { yPercent: 60, autoAlpha: 0, duration: 1, ease: 'expo.out' }, 0.7)
-        .from(body.children, { y: 36, autoAlpha: 0, duration: 1, stagger: 0.08, ease: 'power3.out' }, 0.35)
-        .from($$('.tags li', body), { y: 12, autoAlpha: 0, duration: 0.5, stagger: 0.05, ease: 'power2.out' }, 0.9);
+      gsap.from(body.children, {
+        y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.06, ease: 'power3.out',
+        scrollTrigger: { trigger: d, start: 'top 80%', once: true },
+      });
     });
 
     // Parallaxe interne des images
