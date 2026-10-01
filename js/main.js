@@ -390,9 +390,21 @@
       reals.forEach((el) => el.classList.add('is-in'));
     }
 
-    // Contact
-    gsap.from('.contact-card', { y: 40, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.contact__actions', start: 'top 88%', once: true } });
-    gsap.from('.info-block', { y: 30, autoAlpha: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.contact__info', start: 'top 88%', once: true } });
+    // Contact : apparition par classe (pas de tween sur transform, les cartes
+    // ont leur propre transition CSS au survol)
+    const contacts = $$('.contact-card, .info-block');
+    if (contacts.length && 'IntersectionObserver' in window) {
+      const ioC = new IntersectionObserver((entries) => {
+        entries.forEach((en, k) => {
+          if (!en.isIntersecting) return;
+          en.target.classList.add('is-in');
+          ioC.unobserve(en.target);
+        });
+      }, { rootMargin: '0px 0px -6% 0px' });
+      contacts.forEach((el, i) => { el.style.transitionDelay = (i % 4) * 0.08 + 's'; ioC.observe(el); });
+    } else {
+      contacts.forEach((el) => el.classList.add('is-in'));
+    }
 
   }
 
