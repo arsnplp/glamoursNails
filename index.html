@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="image/header2.webp">
-  <link rel="stylesheet" href="css/style.css?v=202610011645">
+  <link rel="stylesheet" href="css/style.css?v=202610011709">
 
   <!-- Données structurées : à compléter avec l'adresse et les horaires réels -->
   <script type="application/ld+json">
@@ -611,14 +611,49 @@
 
   <!-- ============ FOOTER ============ -->
   <footer class="footer">
-    <div class="footer__big" aria-hidden="true">Glamour <em>Nails</em></div>
-    <div class="wrap footer__bar">
-      <p>© <span data-year></span> Glamour Nails · Onglerie &amp; bien-être</p>
-      <nav aria-label="Liens de pied de page">
+    <div class="wrap footer__grid">
+      <div class="footer__brand">
+        <a href="#accueil" class="brand" aria-label="Glamour Nails — haut de page">
+          <img class="brand__logo" src="image/logo-rond.webp" alt="" width="48" height="48">
+          <span class="brand__text">
+            <span class="brand__name">Glamour Nails</span>
+            <span class="brand__tag">Onglerie · Bien-être</span>
+          </span>
+        </a>
+        <p>Manucure, beauté des pieds et extension de cils à Aix-en-Provence. Réservation en ligne 24h/24 sur Planity.</p>
+        <div class="socials">
+          <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r=".8" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/" target="_blank" rel="noopener" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M14 3v11.5a3.5 3.5 0 1 1-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg></a>
+          <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24"><path d="M15 3h-2.5A3.5 3.5 0 0 0 9 6.5V10H6.5v3.5H9V21h3.5v-7.5H15l.5-3.5h-3V7a1 1 0 0 1 1-1H15V3Z"/></svg></a>
+        </div>
+      </div>
+      <nav class="footer__col" aria-label="Plan du site">
+        <h3>Le site</h3>
+        <a href="#univers">Prestations</a>
+        <a href="#engagements">Nos engagements</a>
         <a href="#tarifs">Tarifs</a>
-        <a href="#faq">FAQ</a>
+        <a href="#avis">Avis</a>
+        <a href="#faq">Questions fréquentes</a>
         <a href="#contact">Contact</a>
+      </nav>
+      <div class="footer__col">
+        <h3>Le salon</h3>
+        <p>35 boulevard de la République<br>13100 Aix-en-Provence</p>
+        <p>Ouvert 7j/7<br>9h30 – 19h00</p>
+      </div>
+      <div class="footer__col">
+        <h3>Contact</h3>
+        <a href="tel:+33600000000">06 00 00 00 00</a>
+        <a href="mailto:contact@glamour-nails.fr">contact@glamour-nails.fr</a>
+        <a href="https://wa.me/33600000000" target="_blank" rel="noopener">WhatsApp</a>
+        <a href="https://www.planity.com/glamour-nails-13100-aix-en-provence" target="_blank" rel="noopener">Réserver sur Planity</a>
+      </div>
+    </div>
+    <div class="wrap footer__bar">
+      <p>© <span data-year></span> Glamour Nails · Tous droits réservés</p>
+      <nav aria-label="Liens légaux">
         <a href="#" data-legal>Mentions légales</a>
+        <a href="#" data-legal>Confidentialité</a>
       </nav>
     </div>
   </footer>
@@ -640,6 +675,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=202610011645"></script>
+  <script src="js/main.js?v=202610011709"></script>
 </body>
 </html>

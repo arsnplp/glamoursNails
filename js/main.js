@@ -387,11 +387,6 @@
     gsap.from('.contact-card', { y: 40, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.contact__actions', start: 'top 88%', once: true } });
     gsap.from('.info-block', { y: 30, autoAlpha: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.contact__info', start: 'top 88%', once: true } });
 
-    // Pied de page : le grand nom glisse
-    gsap.fromTo('.footer__big', { xPercent: 8 }, {
-      xPercent: -8, ease: 'none',
-      scrollTrigger: { trigger: '.footer', start: 'top bottom', end: 'bottom bottom', scrub: true },
-    });
   }
 
   /* =========================================================
