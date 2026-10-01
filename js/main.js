@@ -340,11 +340,8 @@
       });
     });
 
-    // Tarifs : les lignes arrivent en cascade
-    gsap.from('.tabs', { y: 30, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.tabs', start: 'top 90%', once: true } });
-    $$('.panel.is-active .menu li').forEach((li, i) => {
-      gsap.from(li, { y: 30, autoAlpha: 0, duration: 0.8, ease: 'power3.out', delay: (i % 5) * 0.06, scrollTrigger: { trigger: li, start: 'top 94%', once: true } });
-    });
+    // Planity intégré : le cadre monte en fondu
+    gsap.from('.planity', { y: 40, autoAlpha: 0, duration: 1, ease: 'power3.out', scrollTrigger: { trigger: '.planity', start: 'top 88%', once: true } });
 
     // Avis : le mur apparaît en douceur
     gsap.from('.gwall', { y: 60, autoAlpha: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.gwall', start: 'top 90%', once: true } });

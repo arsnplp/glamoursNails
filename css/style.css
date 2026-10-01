@@ -541,6 +541,32 @@ svg { display: block; }
 .tarifs__cta p { margin: 0; color: var(--texte-sombre); }
 .tarifs__cta a:not(.btn) { color: var(--accent); text-underline-offset: 3px; }
 
+
+/* ---------- Planity intégré ---------- */
+.planity {
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--blanc);
+  border: 1px solid var(--ligne-sombre);
+  box-shadow: 0 40px 80px -40px rgba(12, 11, 10, .45);
+}
+.planity__bar {
+  display: flex; align-items: center; gap: 8px;
+  padding: 12px 16px;
+  background: var(--ivoire-2);
+  border-bottom: 1px solid var(--ligne-sombre);
+  font-size: 13px; color: var(--texte-sombre);
+}
+.planity__dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(12, 11, 10, .18); }
+.planity__url { margin-left: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; letter-spacing: .02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.planity__open { margin-left: auto; text-decoration: none; color: var(--accent); font-weight: 500; white-space: nowrap; }
+.planity__open:hover { text-decoration: underline; }
+.planity__frame { display: block; width: 100%; height: min(82vh, 900px); border: 0; background: #fff; }
+@media (max-width: 640px) {
+  .planity__url { display: none; }
+  .planity__frame { height: 78vh; }
+}
+
 /* ---------- Inspirations (pile) ---------- */
 .stack-meta { display: flex; align-items: baseline; gap: 18px; margin: 48px 0 24px; padding-top: 24px; border-top: 1px solid var(--ligne-clair); }
 .stack-meta__count { font-family: var(--serif); font-size: 18px; color: var(--texte-clair); }

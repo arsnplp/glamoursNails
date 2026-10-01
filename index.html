@@ -22,7 +22,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Figtree:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="preload" as="image" href="image/header2.webp">
-  <link rel="stylesheet" href="css/style.css?v=202610011830">
+  <link rel="stylesheet" href="css/style.css?v=202610012230">
 
   <!-- Données structurées : à compléter avec l'adresse et les horaires réels -->
   <script type="application/ld+json">
@@ -94,7 +94,7 @@
       <nav class="nav" aria-label="Navigation principale">
         <a href="#univers">Prestations</a>
         <a href="#engagements">Nos engagements</a>
-        <a href="#tarifs">Tarifs</a>
+        <a href="#tarifs">Réserver</a>
         <a href="#avis">Avis</a>
         <a href="#realisations">Réalisations</a>
         <a href="#contact">Contact</a>
@@ -114,7 +114,7 @@
     <nav aria-label="Navigation mobile">
       <a href="#univers"><small>01</small>Prestations</a>
       <a href="#engagements"><small>02</small>Nos engagements</a>
-      <a href="#tarifs"><small>03</small>Tarifs</a>
+      <a href="#tarifs"><small>03</small>Réserver</a>
       <a href="#avis"><small>04</small>Avis</a>
       <a href="#realisations"><small>05</small>Réalisations</a>
       <a href="#contact"><small>06</small>Contact</a>
@@ -230,7 +230,7 @@
             <ul class="tags">
               <li>Semi-permanent</li><li>Capsules gel &amp; résine</li><li>Chablon</li><li>Gainage</li><li>French &amp; nail art</li>
             </ul>
-            <a class="link-arrow" href="#tarifs" data-tab-link="mains">Voir les tarifs <span aria-hidden="true">→</span></a>
+            <a class="link-arrow" href="#tarifs">Tarifs &amp; réservation <span aria-hidden="true">→</span></a>
             <div class="stack-meta">
               <span class="stack-meta__count"><b data-stack-index>01</b> / <span data-stack-total>00</span></span>
               <span class="stack-meta__cap" data-stack-caption></span>
@@ -259,7 +259,7 @@
             <ul class="tags">
               <li>Fauteuil massant</li><li>Semi-permanent</li><li>Gommage &amp; massage</li><li>Glamour Luxe</li>
             </ul>
-            <a class="link-arrow" href="#tarifs" data-tab-link="pieds">Voir les tarifs <span aria-hidden="true">→</span></a>
+            <a class="link-arrow" href="#tarifs">Tarifs &amp; réservation <span aria-hidden="true">→</span></a>
             <div class="stack-meta">
               <span class="stack-meta__count"><b data-stack-index>01</b> / <span data-stack-total>00</span></span>
               <span class="stack-meta__cap" data-stack-caption></span>
@@ -289,7 +289,7 @@
             <ul class="tags">
               <li>Cils classiques</li><li>Cils mixtes</li><li>Remplissage</li><li>Dépose</li>
             </ul>
-            <a class="link-arrow" href="#tarifs" data-tab-link="cils">Voir les tarifs <span aria-hidden="true">→</span></a>
+            <a class="link-arrow" href="#tarifs">Tarifs &amp; réservation <span aria-hidden="true">→</span></a>
             <div class="stack-meta">
               <span class="stack-meta__count"><b data-stack-index>01</b> / <span data-stack-total>00</span></span>
               <span class="stack-meta__cap" data-stack-caption></span>
@@ -364,118 +364,32 @@
       </div>
     </section>
 
-    <!-- ============ TARIFS ============ -->
-    <section class="tarifs section section--light" id="tarifs">
+    <!-- ============ RÉSERVER : PLANITY INTÉGRÉ ============ -->
+    <section class="reserver section section--light" id="tarifs">
       <div class="wrap">
         <header class="sec-head sec-head--split">
           <div>
-            <p class="kicker kicker--red">La carte</p>
-            <h2 class="sec-title" data-lines>Prestations<br><em>&amp; tarifs.</em></h2>
+            <p class="kicker kicker--red">Réservation en ligne</p>
+            <h2 class="sec-title" data-lines>Réserver une prestation<br><em>depuis notre Planity.</em></h2>
           </div>
-          <p class="sec-lead">Des prix clairs, pour un travail soigné. Durées indicatives&nbsp;: on prend toujours le temps nécessaire.</p>
+          <p class="sec-lead">Toutes nos prestations et nos tarifs, avec les créneaux disponibles en temps réel. Choisissez, réservez, c'est confirmé immédiatement.</p>
         </header>
 
-        <div class="tabs" role="tablist" aria-label="Catégories de prestations" data-tabs>
-          <button role="tab" id="tab-mains" aria-controls="panel-mains" aria-selected="true" data-tab="mains">Mains</button>
-          <button role="tab" id="tab-pieds" aria-controls="panel-pieds" aria-selected="false" tabindex="-1" data-tab="pieds">Pieds</button>
-          <button role="tab" id="tab-cils" aria-controls="panel-cils" aria-selected="false" tabindex="-1" data-tab="cils">Cils</button>
-          <button role="tab" id="tab-extras" aria-controls="panel-extras" aria-selected="false" tabindex="-1" data-tab="extras">Extras</button>
-          <span class="tabs__ink" aria-hidden="true"></span>
-        </div>
-
-        <!-- Tarifs issus de la page Planity du salon -->
-        <div class="panels">
-          <div class="panel is-active" role="tabpanel" id="panel-mains" aria-labelledby="tab-mains" data-panel="mains">
-            <div class="panel__col">
-              <h3 class="panel__cat">Beauté des mains</h3>
-              <ul class="menu">
-                <li><span class="menu__name">Beauté des mains sans vernis</span><span class="menu__dots"></span><span class="menu__time">15 min</span><span class="menu__price">15 €</span></li>
-                <li><span class="menu__name">Beauté des mains + vernis classique</span><span class="menu__dots"></span><span class="menu__time">25 min</span><span class="menu__price">20 €</span></li>
-                <li><span class="menu__name">Beauté des mains + vernis semi-permanent</span><span class="menu__dots"></span><span class="menu__time">20 min</span><span class="menu__price">25 €</span></li>
-                <li><span class="menu__name">Dépose et repose semi-permanent couleur</span><span class="menu__dots"></span><span class="menu__time">30 min</span><span class="menu__price">30 €</span></li>
-                <li><span class="menu__name">Beauté des mains Glamour Luxe<small class="menu__note">Coupe, limage, soin des cuticules, masque nourrissant et massage — sans vernis</small></span><span class="menu__dots"></span><span class="menu__time">15 min</span><span class="menu__price">20 €</span></li>
-              </ul>
-            </div>
-            <div class="panel__col">
-              <h3 class="panel__cat">Pose complète &amp; remplissage</h3>
-              <ul class="menu">
-                <li><span class="menu__name">Capsules en gel + semi-permanent</span><span class="menu__dots"></span><span class="menu__time">55 min</span><span class="menu__price">55 €</span></li>
-                <li><span class="menu__name">Capsules en résine + semi-permanent</span><span class="menu__dots"></span><span class="menu__time">55 min</span><span class="menu__price">49 €</span></li>
-                <li><span class="menu__name">Technique chablon + semi-permanent</span><span class="menu__dots"></span><span class="menu__time">1 h</span><span class="menu__price">60 €</span></li>
-                <li><span class="menu__name">Remplissage résine + semi-permanent</span><span class="menu__dots"></span><span class="menu__time">50 min</span><span class="menu__price">42 €</span></li>
-                <li><span class="menu__name">Remplissage gel + semi-permanent</span><span class="menu__dots"></span><span class="menu__time">50 min</span><span class="menu__price">47 €</span></li>
-                <li><span class="menu__name">Gainage sur ongles naturels</span><span class="menu__dots"></span><span class="menu__time">55 min</span><span class="menu__price">49 €</span></li>
-              </ul>
-            </div>
+        <div class="planity">
+          <div class="planity__bar">
+            <span class="planity__dot" aria-hidden="true"></span>
+            <span class="planity__dot" aria-hidden="true"></span>
+            <span class="planity__dot" aria-hidden="true"></span>
+            <span class="planity__url">planity.com / glamour-nails-aix-en-provence</span>
+            <a class="planity__open" href="https://www.planity.com/glamour-nails-13100-aix-en-provence" target="_blank" rel="noopener">Ouvrir dans un nouvel onglet <span aria-hidden="true">↗</span></a>
           </div>
-          <div class="panel" role="tabpanel" id="panel-pieds" aria-labelledby="tab-pieds" data-panel="pieds" hidden>
-            <div class="panel__col">
-              <h3 class="panel__cat">Beauté des pieds</h3>
-              <ul class="menu">
-                <li><span class="menu__name">Beauté des pieds simple<small class="menu__note">Coupe et limage</small></span><span class="menu__dots"></span><span class="menu__time">30 min</span><span class="menu__price">10 €</span></li>
-                <li><span class="menu__name">Pose de vernis classique</span><span class="menu__dots"></span><span class="menu__time">20 min</span><span class="menu__price">20 €</span></li>
-                <li><span class="menu__name">Pose de vernis semi-permanent</span><span class="menu__dots"></span><span class="menu__time">15 min</span><span class="menu__price">25 €</span></li>
-                <li><span class="menu__name">Dépose et repose semi-permanent</span><span class="menu__dots"></span><span class="menu__time">25 min</span><span class="menu__price">30 €</span></li>
-                <li><span class="menu__name">Beauté des pieds sans vernis<small class="menu__note">Fauteuil massant, soin des cuticules, ponçage des talons, gommage, modelage</small></span><span class="menu__dots"></span><span class="menu__time">40 min</span><span class="menu__price">39 €</span></li>
-                <li><span class="menu__name">Beauté des pieds + vernis classique</span><span class="menu__dots"></span><span class="menu__time">45 min</span><span class="menu__price">45 €</span></li>
-                <li><span class="menu__name">Beauté des pieds + semi-permanent</span><span class="menu__dots"></span><span class="menu__time">50 min</span><span class="menu__price">49 €</span></li>
-              </ul>
-            </div>
-            <div class="panel__col">
-              <h3 class="panel__cat">Rituels &amp; massages</h3>
-              <ul class="menu">
-                <li><span class="menu__name">Beauté des pieds Glamour Luxe<small class="menu__note">Soin complet avec masque, pierres chaudes et vernis semi-permanent</small></span><span class="menu__dots"></span><span class="menu__time">1 h</span><span class="menu__price">59 €</span></li>
-                <li><span class="menu__name">Massage des pieds classique<small class="menu__note">Huiles essentielles ou crème hydratante</small></span><span class="menu__dots"></span><span class="menu__time">15 min</span><span class="menu__price">15 €</span></li>
-                <li><span class="menu__name">Massage des pieds Glamour Luxe<small class="menu__note">Huiles essentielles ou crème hydratante</small></span><span class="menu__dots"></span><span class="menu__time">30 min</span><span class="menu__price">30 €</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel" role="tabpanel" id="panel-cils" aria-labelledby="tab-cils" data-panel="cils" hidden>
-            <div class="panel__col">
-              <h3 class="panel__cat">Extension de cils</h3>
-              <ul class="menu">
-                <li><span class="menu__name">Cils classiques (naturels)</span><span class="menu__dots"></span><span class="menu__time">1 h 15</span><span class="menu__price">70 €</span></li>
-                <li><span class="menu__name">Cils mixtes</span><span class="menu__dots"></span><span class="menu__time">1 h 15</span><span class="menu__price">70 €</span></li>
-                <li><span class="menu__name">Dépose de cils</span><span class="menu__dots"></span><span class="menu__time">20 min</span><span class="menu__price">15 €</span></li>
-              </ul>
-            </div>
-            <div class="panel__col">
-              <h3 class="panel__cat">Remplissage</h3>
-              <ul class="menu">
-                <li><span class="menu__name">Remplissage cil à cil (2 semaines)</span><span class="menu__dots"></span><span class="menu__time">1 h</span><span class="menu__price">55 €</span></li>
-                <li><span class="menu__name">Remplissage cil à cil (3 semaines)</span><span class="menu__dots"></span><span class="menu__time">1 h 10</span><span class="menu__price">65 €</span></li>
-              </ul>
-            </div>
-          </div>
-          <div class="panel" role="tabpanel" id="panel-extras" aria-labelledby="tab-extras" data-panel="extras" hidden>
-            <div class="panel__col">
-              <h3 class="panel__cat">Décorations &amp; nail art</h3>
-              <ul class="menu">
-                <li><span class="menu__name">French / baby boomer / effet chrome</span><span class="menu__dots"></span><span class="menu__time">10 min</span><span class="menu__price">5 €</span></li>
-                <li><span class="menu__name">Nail art (sur devis)</span><span class="menu__dots"></span><span class="menu__time">5 min</span><span class="menu__price">1 à 10 €</span></li>
-              </ul>
-              <h3 class="panel__cat panel__cat--next">Beauté pour homme</h3>
-              <ul class="menu">
-                <li><span class="menu__name">Manucure homme<small class="menu__note">Mise en forme de l’ongle et soin des cuticules, sans vernis</small></span><span class="menu__dots"></span><span class="menu__time">12 min</span><span class="menu__price">15 €</span></li>
-                <li><span class="menu__name">Beauté des pieds homme<small class="menu__note">Fauteuil massant, soin complet et base transparente</small></span><span class="menu__dots"></span><span class="menu__time">40 min</span><span class="menu__price">39 €</span></li>
-              </ul>
-            </div>
-            <div class="panel__col">
-              <h3 class="panel__cat">Dépose &amp; réparation</h3>
-              <ul class="menu">
-                <li><span class="menu__name">Dépose semi-permanent<small class="menu__note">Limage et fortifiant</small></span><span class="menu__dots"></span><span class="menu__time">10 min</span><span class="menu__price">10 €</span></li>
-                <li><span class="menu__name">Dépose résine / gel<small class="menu__note">Coupe, limage et fortifiant</small></span><span class="menu__dots"></span><span class="menu__time">15 min</span><span class="menu__price">15 €</span></li>
-                <li><span class="menu__name">Réparation d’un ongle semi-permanent</span><span class="menu__dots"></span><span class="menu__time">10 min</span><span class="menu__price">5 €</span></li>
-                <li><span class="menu__name">Réparation d’un ongle gel / résine</span><span class="menu__dots"></span><span class="menu__time">10 min</span><span class="menu__price">7 €</span></li>
-              </ul>
-            </div>
-          </div>
+          <iframe class="planity__frame" src="https://www.planity.com/glamour-nails-13100-aix-en-provence" title="Réservation en ligne Glamour Nails sur Planity" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <div class="tarifs__cta">
-          <p>Vous hésitez entre deux prestations&nbsp;? <a href="https://wa.me/33766723859" target="_blank" rel="noopener">Écrivez-nous sur WhatsApp</a>, on vous conseille.</p>
+          <p>Un souci avec la réservation&nbsp;? <a href="tel:+33766723859">Appelez-nous</a> ou <a href="https://wa.me/33766723859" target="_blank" rel="noopener">écrivez sur WhatsApp</a>.</p>
           <a class="btn btn--dark" href="https://www.planity.com/glamour-nails-13100-aix-en-provence" target="_blank" rel="noopener" data-magnetic>
-            <span class="btn__text" data-roll>Réserver sur Planity</span>
+            <span class="btn__text" data-roll>Ouvrir Planity</span>
             <span class="btn__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M7 17 17 7M9 7h8v8"/></svg></span>
           </a>
         </div>
@@ -1349,7 +1263,7 @@
         <h3>Le site</h3>
         <a href="#univers">Prestations</a>
         <a href="#engagements">Nos engagements</a>
-        <a href="#tarifs">Tarifs</a>
+        <a href="#tarifs">Réserver</a>
         <a href="#avis">Avis</a>
         <a href="#realisations">Réalisations</a>
         <a href="#faq">Questions fréquentes</a>
@@ -1394,6 +1308,6 @@
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/Observer.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/SplitText.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/lenis@1.3.17/dist/lenis.min.js"></script>
-  <script src="js/main.js?v=202610011826"></script>
+  <script src="js/main.js?v=202610012230"></script>
 </body>
 </html>
