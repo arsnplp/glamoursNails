@@ -180,6 +180,18 @@
     });
   })();
 
+  /* ---------- Avis sur téléphone : la rangée s'arrête sous le doigt ---------- */
+  (() => {
+    const m = $('.gmarquee');
+    if (!m) return;
+    const stop = () => m.classList.add('is-paused');
+    const go = () => m.classList.remove('is-paused');
+    m.addEventListener('pointerdown', stop);
+    m.addEventListener('pointerup', go);
+    m.addEventListener('pointercancel', go);
+    m.addEventListener('pointerleave', go);
+  })();
+
   /* ---------- FAQ : ouverture animée ---------- */
   $$('.acc__item').forEach((item) => {
     const sum = $('summary', item);
