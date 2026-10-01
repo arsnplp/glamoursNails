@@ -573,17 +573,31 @@
       demarrer();
     }
 
+    // Ressort à amortissement critique (mêmes réglages que Jolis Nails) :
+    // la carte part franchement, ralentit et se pose sans jamais dépasser
+    // sa cible. Neuf dixièmes de la course en 0,5 s, aucun rebond.
+    const RAIDEUR = 0.0175;
+    const AMORTI = 0.78;
+    const ressort = (val, vit, cible) => {
+      vit = (vit + (cible - val) * RAIDEUR) * AMORTI;
+      return [val + vit, vit];
+    };
     function pas(dt) {
-      const k = 0.085 * dt;
-      const amort = Math.pow(0.74, dt);
+      // Le ressort est calibré par image à 60 i/s : on rejoue autant de pas
+      // que d'images écoulées plutôt que d'étirer un seul pas.
+      const n = Math.max(1, Math.min(3, Math.round(dt)));
       let calme = true;
       E.forEach((e, i) => {
-        if (e.attente > 0) { e.attente -= dt; calme = false; return; }
-        e.vx = e.vx * amort + (e.tx - e.x) * k; e.x += e.vx * dt;
-        e.vy = e.vy * amort + (e.ty - e.y) * k; e.y += e.vy * dt;
-        e.vr = e.vr * amort + (e.tr - e.r) * k; e.r += e.vr * dt;
-        e.vs = e.vs * amort + (e.ts - e.s) * k; e.s += e.vs * dt;
-        e.o += (e.to - e.o) * Math.min(1, 0.14 * dt);
+        for (let k = 0; k < n; k++) {
+          if (e.attente > 0) { e.attente--; calme = false; continue; }
+          [e.x, e.vx] = ressort(e.x, e.vx, e.tx);
+          [e.y, e.vy] = ressort(e.y, e.vy, e.ty);
+          [e.r, e.vr] = ressort(e.r, e.vr, e.tr);
+          [e.s, e.vs] = ressort(e.s, e.vs, e.ts);
+          // L'opacité ne ressorte pas : simple approche exponentielle,
+          // un peu plus vive à l'entrée qu'à la sortie.
+          e.o += (e.to - e.o) * (e.to > e.o ? 0.07 : 0.05);
+        }
         if (Math.abs(e.tx - e.x) + Math.abs(e.ty - e.y) + Math.abs(e.tr - e.r) > 0.05 || Math.abs(e.vx) > 0.01 || Math.abs(e.to - e.o) > 0.005) calme = false;
         const c = cards[i];
         c.style.transform = `translate3d(${e.x.toFixed(2)}px, ${e.y.toFixed(2)}px, 0) rotate(${e.r.toFixed(3)}deg) scale(${e.s.toFixed(4)})`;
@@ -607,9 +621,10 @@
     function deployer() {
       if (deploye) return;
       deploye = true;
+      // Ouverture en cascade de gauche à droite, 5 images entre deux cartes
       cards.forEach((_, i) => {
         const o = decalage(i);
-        E[i].attente = reduit ? 0 : Math.abs(o) * 5 + (o > 0 ? 2 : 0);
+        E[i].attente = reduit || Math.abs(o) > moitie ? 0 : (o + moitie) * 5;
       });
       consignes();
     }
