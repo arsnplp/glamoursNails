@@ -667,17 +667,15 @@ svg { display: block; }
 .gwall__fade--b { inset: auto 0 0 0; height: 22%; background: linear-gradient(0deg, var(--ivoire), transparent); }
 .gwall__fade--l { inset: 0 auto 0 0; width: 18%; background: linear-gradient(90deg, var(--ivoire), transparent); }
 .gwall__fade--r { inset: 0 0 0 auto; width: 18%; background: linear-gradient(270deg, var(--ivoire), transparent); }
-/* Rangée défilante (téléphone et tablette), comme chez Jolis Nails */
-.gmarquee { display: none; overflow: hidden; padding: 10px 0 30px; }
-.gmarquee__track { display: flex; gap: 16px; width: max-content; animation: gmarquee 150s linear infinite; }
-.gmarquee.is-paused .gmarquee__track { animation-play-state: paused; }
-.gmarquee .gcard { width: 300px; flex-shrink: 0; }
-@keyframes gmarquee { to { transform: translateX(calc(-50% - 8px)); } }
 @media (max-width: 860px) {
-  .gwall { display: none; }
-  .gmarquee { display: block; }
+  .gwall { height: 520px; perspective: 260px; }
+  .gwall__scene { transform: translate(-50%, -50%) translateX(-30px) translateZ(-60px) rotateX(14deg) rotateY(-6deg) rotateZ(10deg); }
+  .gcol { width: 250px; }
+  .gcol:nth-child(n+4) { display: none; }
 }
-@media (prefers-reduced-motion: reduce) { .gmarquee__track { animation: none; } }
+@media (max-width: 640px) {
+  .gcol:nth-child(n+3) { display: none; }
+}
 @media (prefers-reduced-motion: reduce) {
   .gcol__track { animation: none; }
 }
