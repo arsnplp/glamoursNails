@@ -572,27 +572,65 @@ svg { display: block; }
 .stack__card img { width: 100%; height: 100%; object-fit: cover; pointer-events: none; }
 .stack__card::after { content: ""; position: absolute; inset: 0; background: var(--noir); opacity: var(--dim, 0); transition: opacity .6s var(--ease); pointer-events: none; }
 
-/* ---------- Avis ---------- */
+/* ---------- Avis Google : mur de cartes en perspective ---------- */
 .avis { overflow: hidden; }
 .avis__score { margin: 26px 0 0; color: var(--texte-sombre); font-size: 15px; }
+.avis__score strong { color: var(--noir); font-weight: 500; }
+.avis__score a { color: var(--accent); text-underline-offset: 3px; }
 .stars { color: var(--accent); letter-spacing: .12em; }
-.marquee { display: flex; overflow: hidden; cursor: grab; padding: 10px 0 30px; }
-.marquee.is-grabbing { cursor: grabbing; }
-.marquee__panel { display: flex; gap: 20px; padding-right: 20px; flex-shrink: 0; }
-.review {
-  width: clamp(290px, 30vw, 400px);
+.gwall {
+  --gap: 16px;
+  --duree: 42s;
+  position: relative;
+  height: clamp(520px, 62vh, 680px);
+  overflow: hidden;
+  perspective: 320px;
+}
+.gwall__scene {
+  position: absolute; left: 50%; top: 50%;
+  display: flex; gap: var(--gap);
+  transform: translate(-50%, -50%) translateX(-80px) translateZ(-90px) rotateX(18deg) rotateY(-9deg) rotateZ(16deg);
+  transform-style: preserve-3d;
+}
+.gcol { display: flex; flex-direction: column; gap: var(--gap); width: 270px; flex-shrink: 0; }
+.gcol__track { display: flex; flex-direction: column; gap: var(--gap); flex-shrink: 0; animation: gcol-up var(--duree) linear infinite; }
+.gcol--rev .gcol__track { animation-direction: reverse; }
+.gwall:hover .gcol__track { animation-play-state: paused; }
+@keyframes gcol-up { from { transform: translateY(0); } to { transform: translateY(calc(-100% - var(--gap))); } }
+.gcard {
   margin: 0;
-  padding: 34px 32px;
-  border-radius: var(--radius);
+  padding: 18px 18px 20px;
+  border-radius: 14px;
   background: var(--blanc);
   border: 1px solid var(--ligne-sombre);
-  box-shadow: 0 30px 60px -40px rgba(12, 11, 10, .35);
-  display: flex; flex-direction: column; gap: 18px;
-  user-select: none;
+  box-shadow: 0 18px 40px -28px rgba(12, 11, 10, .4);
+  display: flex; flex-direction: column; gap: 10px;
 }
-.review blockquote { margin: 0; font-family: var(--serif); font-weight: 500; font-size: 22px; line-height: 1.4; flex: 1; }
-.review figcaption { font-size: 13px; color: var(--texte-sombre); letter-spacing: .04em; }
-.review figcaption b { font-weight: 500; color: var(--noir); }
+.gcard__head { display: flex; align-items: center; gap: 10px; }
+.gcard__avatar { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; display: grid; place-items: center; background: var(--vert); color: var(--ivoire); font-family: var(--serif); font-weight: 600; font-size: 18px; }
+.gcard__head figcaption { display: flex; flex-direction: column; line-height: 1.25; min-width: 0; flex: 1; }
+.gcard__head b { font-weight: 500; font-size: 14px; color: var(--noir); }
+.gcard__head small { font-size: 12px; color: var(--texte-sombre); }
+.gcard__g { width: 18px; height: 18px; flex-shrink: 0; }
+.gcard .stars { font-size: 13px; }
+.gcard blockquote { margin: 0; font-size: 14px; line-height: 1.55; color: #2b2723; }
+.gwall__fade { position: absolute; pointer-events: none; z-index: 2; }
+.gwall__fade--t { inset: 0 0 auto 0; height: 22%; background: linear-gradient(180deg, var(--ivoire), transparent); }
+.gwall__fade--b { inset: auto 0 0 0; height: 22%; background: linear-gradient(0deg, var(--ivoire), transparent); }
+.gwall__fade--l { inset: 0 auto 0 0; width: 18%; background: linear-gradient(90deg, var(--ivoire), transparent); }
+.gwall__fade--r { inset: 0 0 0 auto; width: 18%; background: linear-gradient(270deg, var(--ivoire), transparent); }
+@media (max-width: 860px) {
+  .gwall { height: 520px; perspective: 260px; }
+  .gwall__scene { transform: translate(-50%, -50%) translateX(-30px) translateZ(-60px) rotateX(14deg) rotateY(-6deg) rotateZ(10deg); }
+  .gcol { width: 230px; }
+  .gcol:nth-child(n+4) { display: none; }
+}
+@media (max-width: 640px) {
+  .gcol:nth-child(n+3) { display: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .gcol__track { animation: none; }
+}
 
 /* ---------- Bande parallaxe ---------- */
 .band { position: relative; min-height: 88vh; display: flex; align-items: center; overflow: hidden; isolation: isolate; }

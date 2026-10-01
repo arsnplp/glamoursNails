@@ -115,7 +115,7 @@
       el.addEventListener('pointerenter', () => cur.classList.add('is-hover'));
       el.addEventListener('pointerleave', () => cur.classList.remove('is-hover'));
     });
-    $$('[data-stack], .fan__stage, [data-drag-marquee]').forEach((el) => {
+    $$('[data-stack], .fan__stage').forEach((el) => {
       el.addEventListener('pointerenter', () => { label.textContent = 'Glisser'; cur.classList.add('is-drag'); });
       el.addEventListener('pointerleave', () => cur.classList.remove('is-drag'));
     });
@@ -178,40 +178,6 @@
           .to(allure, { v: sens, duration: 1.2, ease: 'power2.out' });
       },
     });
-  })();
-
-  /* ---------- Carrousel d'avis : défilement continu déplaçable ---------- */
-  (() => {
-    const piste = $('[data-drag-marquee]');
-    if (!piste) return;
-    const p1 = $('.marquee__panel', piste);
-    const p2 = p1.cloneNode(true);
-    p2.setAttribute('aria-hidden', 'true');
-    piste.appendChild(p2);
-    const panneaux = [p1, p2];
-    const repos = reduit ? 0 : 1;
-    const boucle = gsap.timeline({ repeat: -1, onReverseComplete: () => boucle.progress(1) });
-    boucle.fromTo(panneaux, { xPercent: 0 }, { xPercent: -100, duration: p1.offsetWidth / 45, ease: 'none' });
-    boucle.timeScale(repos);
-    const allure = { v: repos };
-    let sens = 1;
-    Observer.create({
-      target: piste,
-      type: 'pointer,touch',
-      onPress: () => piste.classList.add('is-grabbing'),
-      onRelease: () => piste.classList.remove('is-grabbing'),
-      onChangeX: (self) => {
-        const elan = gsap.utils.clamp(-25, 25, -0.006 * self.velocityX);
-        sens = elan < 0 ? -1 : 1;
-        gsap.timeline({ onUpdate: () => boucle.timeScale(allure.v) })
-          .to(allure, { v: elan, duration: 0.1, overwrite: true })
-          .to(allure, { v: sens * repos, duration: 1.2 });
-      },
-    });
-    if (pointeurFin) {
-      piste.addEventListener('pointerenter', () => gsap.to(boucle, { timeScale: 0.25 * sens, duration: 0.6 }));
-      piste.addEventListener('pointerleave', () => gsap.to(boucle, { timeScale: sens * repos, duration: 0.6 }));
-    }
   })();
 
   /* ---------- FAQ : ouverture animée ---------- */
@@ -380,8 +346,8 @@
       gsap.from(li, { y: 30, autoAlpha: 0, duration: 0.8, ease: 'power3.out', delay: (i % 5) * 0.06, scrollTrigger: { trigger: li, start: 'top 94%', once: true } });
     });
 
-    // Avis : les cartes montent
-    gsap.from('.marquee', { y: 60, autoAlpha: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.marquee', start: 'top 90%', once: true } });
+    // Avis : le mur apparaît en douceur
+    gsap.from('.gwall', { y: 60, autoAlpha: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.gwall', start: 'top 90%', once: true } });
 
     // Contact
     gsap.from('.contact-card', { y: 40, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.contact__actions', start: 'top 88%', once: true } });
