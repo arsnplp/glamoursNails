@@ -405,11 +405,11 @@ svg { display: block; }
 .domaine__media {
   position: relative;
   aspect-ratio: 4 / 5;
-  border-radius: var(--radius);
-  overflow: hidden;
-  background: var(--noir-3);
 }
-.domaine__img { position: absolute; inset: -12% 0; background-size: cover; background-position: center; will-change: transform; }
+.domaine__media .stack { height: 100%; }
+.domaine__media .stack__card { width: 82%; }
+.domaine .stack-meta { margin: 36px 0 18px; }
+.domaine .stack-nav { gap: 10px; }
 .domaine__num {
   position: absolute; left: 24px; bottom: 16px;
   font-family: var(--serif); font-style: italic; font-size: clamp(64px, 9vw, 130px); line-height: 1;
@@ -542,12 +542,9 @@ svg { display: block; }
 .tarifs__cta a:not(.btn) { color: var(--accent); text-underline-offset: 3px; }
 
 /* ---------- Inspirations (pile) ---------- */
-.inspi { background: var(--noir); overflow: hidden; }
-.inspi__grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(40px, 7vw, 120px); align-items: center; }
-.inspi .sec-lead { margin-left: 0; }
 .stack-meta { display: flex; align-items: baseline; gap: 18px; margin: 48px 0 24px; padding-top: 24px; border-top: 1px solid var(--ligne-clair); }
 .stack-meta__count { font-family: var(--serif); font-size: 18px; color: var(--texte-clair); }
-.stack-meta__count b { font-weight: 400; font-size: 40px; color: var(--ivoire); }
+.stack-meta__count b { font-weight: 500; font-size: 36px; color: var(--ivoire); }
 .stack-meta__cap { font-family: var(--serif); font-style: italic; font-size: 22px; color: var(--accent-clair); }
 .stack-nav { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
 .stack-nav .link-arrow { margin-left: 16px; }
@@ -711,12 +708,10 @@ svg { display: block; }
   .fan { --fan-w: 250px; --fan-h: 460px; }
 }
 @media (max-width: 860px) {
-  .domaine, .inspi__grid, .faq__grid, .contact__grid { grid-template-columns: 1fr; }
+  .domaine, .faq__grid, .contact__grid { grid-template-columns: 1fr; }
   .domaine--rev .domaine__media { order: 0; }
-  .domaine__media { aspect-ratio: 4 / 4.2; }
+  .domaine__media { aspect-ratio: 4 / 4.4; max-width: 440px; margin: 0 auto; width: 100%; }
   .panel { grid-template-columns: 1fr; gap: 40px; }
-  .stack { height: 500px; }
-  .inspi__text { order: 1; }
   .reveal-frame__media { clip-path: inset(22% 10% 22% 10% round 22px); }
 }
 @media (max-width: 640px) {

@@ -364,14 +364,6 @@
       });
     });
 
-    // Parallaxe interne des images
-    $$('[data-inner-parallax]').forEach((img) => {
-      gsap.fromTo(img, { yPercent: -8 }, {
-        yPercent: 8, ease: 'none',
-        scrollTrigger: { trigger: img.parentElement, start: 'top bottom', end: 'bottom top', scrub: true },
-      });
-    });
-
     // Fonds en parallaxe (façon Holeen) : l'image défile moins vite que la section
     $$('[data-parallax]').forEach((fond) => {
       const debut = parseFloat(fond.dataset.parallaxStart ?? 0);
@@ -720,17 +712,22 @@
      Pile de photos à faire glisser (inspiré de Jolis Nails)
      ========================================================= */
   function initStack() {
-    const pile = $('[data-stack]');
-    if (!pile) return;
+    $$('[data-stack]').forEach(initPile);
+  }
+  // Une pile par prestation : les commandes et le compteur sont cherchés
+  // dans le bloc parent (.domaine), pour ne piloter que cette pile-là.
+  function initPile(pile) {
+    const root = pile.closest('.domaine') || document;
     const cards = $$('.stack__card', pile);
     const n = cards.length;
-    const idx = $('[data-stack-index]');
-    const tot = $('[data-stack-total]');
-    const cap = $('[data-stack-caption]');
+    const idx = $('[data-stack-index]', root);
+    const tot = $('[data-stack-total]', root);
+    const cap = $('[data-stack-caption]', root);
     const ANGLES = [-3, 4, -6, 2, 7, -4, 5, -2];
     let ordre = cards.map((_, i) => i);
     let occupe = false;
     tot.textContent = String(n).padStart(2, '0');
+    cap.textContent = cards[0].dataset.caption;
     pile.tabIndex = 0;
 
     gsap.set(cards, { xPercent: -50, yPercent: -50, x: 0, y: 0 });
@@ -811,8 +808,8 @@
     pile.addEventListener('pointerup', lacher);
     pile.addEventListener('pointercancel', lacher);
 
-    $('[data-stack-next]').addEventListener('click', () => jeter(-1));
-    $('[data-stack-prev]').addEventListener('click', rappeler);
+    $('[data-stack-next]', root).addEventListener('click', () => jeter(-1));
+    $('[data-stack-prev]', root).addEventListener('click', rappeler);
     pile.addEventListener('keydown', (e) => {
       if (e.key === 'ArrowRight') { e.preventDefault(); jeter(-1); }
       if (e.key === 'ArrowLeft') { e.preventDefault(); rappeler(); }
