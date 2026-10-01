@@ -406,6 +406,9 @@ svg { display: block; }
   margin-bottom: clamp(96px, 12vw, 180px);
 }
 .domaine:last-child { margin-bottom: 0; }
+/* Un filet entre chaque prestation */
+.domaine + .domaine { position: relative; padding-top: clamp(64px, 8vw, 120px); margin-top: calc(clamp(96px, 12vw, 180px) * -1 + clamp(64px, 8vw, 120px)); }
+.domaine + .domaine::before { content: ""; position: absolute; left: 0; right: 0; top: 0; height: 1px; background: var(--ligne-clair); }
 .domaine__media { grid-column: 1; grid-row: 1 / span 2; }
 .domaine__head { grid-column: 2; grid-row: 1; align-self: end; }
 .domaine__body { grid-column: 2; grid-row: 2; align-self: start; }
