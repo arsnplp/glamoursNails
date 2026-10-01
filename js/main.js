@@ -503,7 +503,8 @@
       // Encombrement réel d'une carte couchée à 21° (largeur + part de la hauteur)
       const a = (21 * Math.PI) / 180;
       const demi = ((lc * Math.cos(a) + hc * Math.sin(a)) * 0.7756 * 1.1) / 2;
-      const dispo = stage.clientWidth / 2 - demi - 8;
+      // Les cartes extérieures peuvent déborder légèrement : la section les rogne
+      const dispo = stage.clientWidth / 2 - demi + 60;
       const voisin = 0.79 * lc * moitie;
       ecart = Math.max(lc * 0.3, Math.min(declare, voisin, dispo));
     }
