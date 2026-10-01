@@ -757,6 +757,7 @@ svg { display: block; }
 .contact__veil { position: absolute; inset: 0; z-index: -1; background: linear-gradient(90deg, rgba(12, 11, 10, .9) 0%, rgba(12, 11, 10, .72) 45%, rgba(12, 11, 10, .35) 100%), linear-gradient(180deg, rgba(12, 11, 10, .5) 0%, transparent 30%, transparent 70%, rgba(12, 11, 10, .7) 100%); }
 @media (max-width: 860px) {
   .footer__grid { grid-template-columns: 1fr 1fr; } .contact__veil { background: rgba(12, 11, 10, .78); } }
+.contact__lead { margin-left: 0; color: rgba(245, 239, 230, .75); max-width: 460px; }
 .contact__grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: clamp(40px, 7vw, 120px); align-items: end; }
 .contact__actions { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 56px; }
 .contact-card {
