@@ -53,6 +53,8 @@ body {
 body.is-loading { overflow: hidden; }
 img { display: block; max-width: 100%; }
 main { overflow-x: clip; }
+.nowrap { white-space: nowrap; }
+.only-mobile { display: none; }
 a { color: inherit; }
 button { font: inherit; color: inherit; cursor: pointer; }
 svg { display: block; }
@@ -851,6 +853,16 @@ svg { display: block; }
   .reveal-frame__media { clip-path: inset(22% 10% 22% 10% round 22px); }
 }
 @media (max-width: 640px) {
+  .only-desktop { display: none !important; }
+  .only-mobile { display: inline; }
+  .eyebrow, .kicker { font-size: 11px; letter-spacing: .2em; }
+  .sec-head { margin-bottom: 36px; }
+  .sec-lead { margin-top: 18px; }
+  .manifeste__sign { font-size: 11px; letter-spacing: .14em; line-height: 1.8; }
+  .manifeste__line { width: 40px; flex-shrink: 0; }
+  .faq__grid { gap: 8px; }
+  .reveal-frame__media { clip-path: inset(10% 8% 10% 8% round 20px); }
+  .reveal-frame__img { background-position: 50% 60%; transform: scale(1.05); }
   .header { top: 10px; }
   .header__pill { height: 60px; padding: 0 6px 0 14px; gap: 10px; }
   .header__cta { display: none; }
