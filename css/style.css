@@ -398,12 +398,18 @@ svg { display: block; }
 .domaine {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
-  gap: clamp(32px, 7vw, 120px);
+  grid-template-rows: auto auto;
+  column-gap: clamp(32px, 7vw, 120px);
+  row-gap: 24px;
   align-items: center;
   margin-bottom: clamp(96px, 12vw, 180px);
 }
 .domaine:last-child { margin-bottom: 0; }
-.domaine--rev .domaine__media { order: 2; }
+.domaine__media { grid-column: 1; grid-row: 1 / span 2; }
+.domaine__head { grid-column: 2; grid-row: 1; align-self: end; }
+.domaine__body { grid-column: 2; grid-row: 2; align-self: start; }
+.domaine--rev .domaine__media { grid-column: 2; }
+.domaine--rev .domaine__head, .domaine--rev .domaine__body { grid-column: 1; }
 .domaine__media {
   position: relative;
   aspect-ratio: 4 / 5;
@@ -418,8 +424,8 @@ svg { display: block; }
   color: var(--ivoire);
   mix-blend-mode: difference;
 }
-.domaine__title { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -.02em; margin: 0 0 24px; }
-.domaine__body p:not(.kicker) { color: var(--texte-clair); max-width: 460px; margin: 0 0 28px; }
+.domaine__title { font-family: var(--serif); font-weight: 500; font-size: clamp(40px, 5vw, 72px); line-height: 1; letter-spacing: -.02em; margin: 0; }
+.domaine__body p { color: var(--texte-clair); max-width: 460px; margin: 0 0 28px; }
 .tags { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 36px; padding: 0; }
 .tags li { font-size: 13px; padding: 7px 14px; border: 1px solid var(--ligne-clair); border-radius: 999px; color: rgba(245, 239, 230, .85); transition: border-color .3s, background .3s; }
 .tags li:hover { border-color: var(--accent); background: rgba(31, 122, 82, .12); }
@@ -848,7 +854,11 @@ svg { display: block; }
 }
 @media (max-width: 860px) {
   .domaine, .faq__grid, .contact__grid { grid-template-columns: 1fr; }
-  .domaine--rev .domaine__media { order: 0; }
+  .domaine { grid-template-rows: auto auto auto; row-gap: 24px; }
+  .domaine__head, .domaine__media, .domaine__body, .domaine--rev .domaine__head, .domaine--rev .domaine__media, .domaine--rev .domaine__body { grid-column: 1; grid-row: auto; }
+  .domaine__head { text-align: center; }
+  .domaine__head .kicker { margin-bottom: 10px; }
+  .domaine__body p { max-width: none; }
   .domaine__media { aspect-ratio: 4 / 4.4; max-width: 440px; margin: 0 auto; width: 100%; }
   .panel { grid-template-columns: 1fr; gap: 40px; }
   .reveal-frame__media { clip-path: inset(22% 10% 22% 10% round 22px); }
