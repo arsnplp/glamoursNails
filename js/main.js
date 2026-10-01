@@ -361,6 +361,21 @@
       vids.forEach((v) => io.observe(v));
     }
 
+    // Réalisations : « Voir plus » déplie toute la grille
+    (() => {
+      const grille = $('[data-masonry]');
+      const bouton = $('[data-masonry-more]');
+      if (!grille || !bouton) return;
+      const texte = $('.btn__text', bouton);
+      bouton.addEventListener('click', () => {
+        const ouvert = grille.classList.toggle('is-collapsed') === false;
+        bouton.setAttribute('aria-expanded', String(ouvert));
+        texte.textContent = ouvert ? 'Voir moins' : 'Voir plus de réalisations';
+        if (!ouvert) allerA(grille.closest('section'));
+        ScrollTrigger.refresh();
+      });
+    })();
+
     // Réalisations : chaque carte monte en fondu quand elle entre à l'écran.
     // Observée directement (et non par position), car la grille en colonnes
     // change de hauteur au fil du chargement des images.
