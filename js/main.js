@@ -349,6 +349,11 @@
     // Avis : le mur apparaît en douceur
     gsap.from('.gwall', { y: 60, autoAlpha: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.gwall', start: 'top 90%', once: true } });
 
+    // Réalisations : chaque photo monte en fondu quand elle entre à l'écran
+    $$('[data-real]').forEach((el) => {
+      gsap.from(el, { y: 24, autoAlpha: 0, duration: 0.6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
+    });
+
     // Contact
     gsap.from('.contact-card', { y: 40, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.contact__actions', start: 'top 88%', once: true } });
     gsap.from('.info-block', { y: 30, autoAlpha: 0, duration: 0.9, stagger: 0.1, ease: 'power3.out', scrollTrigger: { trigger: '.contact__info', start: 'top 88%', once: true } });
