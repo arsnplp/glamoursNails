@@ -300,7 +300,7 @@ svg { display: block; }
 .hero__bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .hero__img {
   position: absolute; inset: -6% 0 -20% 0;
-  background-size: cover; background-position: 55% 78%;
+  background-size: cover; background-position: 62% 40%;
   will-change: transform;
 }
 .hero__veil {

@@ -236,7 +236,7 @@
     demarrer();
   } else {
     const heroImg = new Image();
-    heroImg.src = 'image/header2.webp';
+    heroImg.src = 'image/header3.webp';
     const pret = Promise.all([
       document.fonts ? document.fonts.ready : Promise.resolve(),
       heroImg.decode ? heroImg.decode().catch(() => {}) : Promise.resolve(),
