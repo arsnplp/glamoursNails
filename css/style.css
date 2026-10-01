@@ -300,14 +300,14 @@ svg { display: block; }
 .hero__bg { position: absolute; inset: 0; z-index: -2; overflow: hidden; }
 .hero__img {
   position: absolute; inset: -6% 0 -20% 0;
-  background-size: cover; background-position: 55% 30%;
+  background-size: cover; background-position: 55% 78%;
   will-change: transform;
 }
 .hero__veil {
   position: absolute; inset: 0; z-index: -1;
   background:
-    linear-gradient(180deg, rgba(12, 11, 10, .6) 0%, rgba(12, 11, 10, .3) 35%, rgba(12, 11, 10, .8) 78%, var(--noir) 100%),
-    linear-gradient(90deg, rgba(12, 11, 10, .9) 0%, rgba(12, 11, 10, .55) 45%, rgba(12, 11, 10, .15) 100%);
+    linear-gradient(180deg, rgba(12, 11, 10, .45) 0%, rgba(12, 11, 10, .1) 35%, rgba(12, 11, 10, .6) 80%, var(--noir) 100%),
+    linear-gradient(90deg, rgba(12, 11, 10, .82) 0%, rgba(12, 11, 10, .35) 48%, rgba(12, 11, 10, 0) 100%);
 }
 .hero__content { padding-top: 160px; padding-bottom: 40px; }
 .eyebrow { display: inline-flex; align-items: center; gap: 12px; color: var(--ivoire); }
