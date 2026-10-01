@@ -358,7 +358,7 @@ svg { display: block; }
 .ribbon b { font-weight: 400; font-size: 16px; opacity: .8; }
 
 /* ---------- Manifeste ---------- */
-.manifeste { padding-top: clamp(100px, 11vw, 150px); padding-bottom: clamp(24px, 3vw, 40px); }
+.manifeste { padding-top: clamp(90px, 10vw, 130px); padding-bottom: 20px; }
 .manifeste__grid { max-width: 900px; }
 .manifeste__text {
   font-family: var(--serif);
@@ -374,13 +374,14 @@ svg { display: block; }
 .manifeste__line { width: 80px; height: 1px; background: currentColor; }
 
 /* ---------- Cadre qui s'ouvre ---------- */
-.reveal-frame { background: var(--ivoire); position: relative; }
+.reveal-frame { background: var(--ivoire); position: relative; margin-top: -1px; }
+.pin-spacer { background: var(--ivoire); }
 .reveal-frame__pin { height: 100vh; height: 100svh; display: grid; place-items: center; overflow: hidden; }
 .reveal-frame__media {
   position: relative;
   width: 100%; height: 100%;
   overflow: hidden;
-  clip-path: inset(18% 22% 18% 22% round 28px);
+  clip-path: inset(4% 18% 4% 18% round 28px);
   will-change: clip-path;
 }
 .reveal-frame__img { position: absolute; inset: -6% 0; background-size: cover; background-position: center 40%; transform: scale(1.2); will-change: transform; }
@@ -722,7 +723,7 @@ svg { display: block; }
   .panel { grid-template-columns: 1fr; gap: 40px; }
   .stack { height: 500px; }
   .inspi__text { order: 1; }
-  .reveal-frame__media { clip-path: inset(22% 10% 22% 10% round 22px); }
+  .reveal-frame__media { clip-path: inset(6% 8% 6% 8% round 22px); }
 }
 @media (max-width: 640px) {
   .header { top: 10px; }

@@ -343,7 +343,7 @@
       if (!media) return;
       const mm = gsap.matchMedia();
       mm.add({ petit: '(max-width: 860px)', grand: '(min-width: 861px)' }, (ctx) => {
-        const depart = ctx.conditions.petit ? 'inset(22% 10% 22% 10% round 22px)' : 'inset(18% 22% 18% 22% round 28px)';
+        const depart = ctx.conditions.petit ? 'inset(6% 8% 6% 8% round 22px)' : 'inset(4% 18% 4% 18% round 28px)';
         const q = SplitText.create('[data-frame-quote] p', { type: 'lines', mask: 'lines' });
         const tl = gsap.timeline({
           scrollTrigger: { trigger: '.reveal-frame', start: 'top top', end: '+=100%', scrub: 1, pin: '.reveal-frame__pin', anticipatePin: 1 },
