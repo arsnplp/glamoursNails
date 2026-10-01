@@ -394,7 +394,8 @@ svg { display: block; }
 .reveal-frame__quote p { letter-spacing: .01em; }
 
 /* ---------- Univers (domaines) ---------- */
-.univers { background: var(--noir); padding-top: clamp(64px, 8vw, 110px); }
+.univers { background: var(--noir); padding-top: clamp(40px, 5vw, 64px); }
+.univers .sec-head { margin-bottom: clamp(72px, 9vw, 130px); }
 .domaine {
   display: grid;
   grid-template-columns: 1.05fr 1fr;
