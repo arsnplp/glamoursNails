@@ -1,0 +1,39 @@
+{
+ "photos": [
+  "assets/google/photo-01.jpg",
+  "assets/google/photo-02.jpg",
+  "assets/google/photo-03.jpg",
+  "assets/google/photo-04.jpg",
+  "assets/google/photo-05.jpg",
+  "assets/google/photo-06.jpg",
+  "assets/google/photo-07.jpg",
+  "assets/google/photo-08.jpg",
+  "assets/google/photo-09.jpg",
+  "assets/google/photo-10.jpg",
+  "assets/google/photo-11.jpg",
+  "assets/google/photo-12.jpg",
+  "assets/google/photo-13.jpg",
+  "assets/google/photo-14.jpg",
+  "assets/google/photo-15.jpg",
+  "assets/google/photo-16.jpg",
+  "assets/google/photo-17.jpg",
+  "assets/google/photo-18.jpg",
+  "assets/google/photo-19.jpg",
+  "assets/google/photo-20.jpg",
+  "assets/google/photo-21.jpg",
+  "assets/google/photo-22.jpg",
+  "assets/google/photo-23.jpg",
+  "assets/google/photo-24.jpg",
+  "assets/google/photo-25.jpg",
+  "assets/google/photo-26.jpg",
+  "assets/google/photo-27.jpg"
+ ],
+ "videos": [
+  "assets/google/video-1.mp4",
+  "assets/google/video-2.mp4",
+  "assets/google/video-3.mp4",
+  "assets/google/video-4.mp4",
+  "assets/google/video-5.mp4",
+  "assets/google/video-6.mp4"
+ ]
+}

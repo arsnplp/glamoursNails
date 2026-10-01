@@ -349,10 +349,34 @@
     // Avis : le mur apparaît en douceur
     gsap.from('.gwall', { y: 60, autoAlpha: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.gwall', start: 'top 90%', once: true } });
 
-    // Réalisations : chaque photo monte en fondu quand elle entre à l'écran
-    $$('[data-real]').forEach((el) => {
-      gsap.from(el, { y: 24, autoAlpha: 0, duration: 0.6, ease: 'power2.out', scrollTrigger: { trigger: el, start: 'top 92%', once: true } });
-    });
+    // Réalisations : les vidéos se lancent (muettes) quand elles sont à l'écran
+    const vids = $$('[data-video]');
+    if (vids.length && 'IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          const v = en.target;
+          if (en.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); }
+        });
+      }, { threshold: 0.35 });
+      vids.forEach((v) => io.observe(v));
+    }
+
+    // Réalisations : chaque carte monte en fondu quand elle entre à l'écran.
+    // Observée directement (et non par position), car la grille en colonnes
+    // change de hauteur au fil du chargement des images.
+    const reals = $$('[data-real]');
+    if (reals.length && 'IntersectionObserver' in window) {
+      const ioReal = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          en.target.classList.add('is-in');
+          ioReal.unobserve(en.target);
+        });
+      }, { rootMargin: '0px 0px -8% 0px' });
+      reals.forEach((el) => ioReal.observe(el));
+    } else {
+      reals.forEach((el) => el.classList.add('is-in'));
+    }
 
     // Contact
     gsap.from('.contact-card', { y: 40, autoAlpha: 0, duration: 0.9, stagger: 0.08, ease: 'power3.out', scrollTrigger: { trigger: '.contact__actions', start: 'top 88%', once: true } });
