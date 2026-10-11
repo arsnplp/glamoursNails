@@ -29,10 +29,12 @@
   <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192">
   <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
+  <link rel="preload" as="script" href="js/vendor/gsap.min.js">
+  <link rel="preload" as="script" href="js/vendor/ScrollTrigger.min.js">
   <link rel="preload" as="font" type="font/woff2" href="fonts/cormorant-garamond.woff2" crossorigin>
   <link rel="preload" as="font" type="font/woff2" href="fonts/figtree.woff2" crossorigin>
   <link rel="preload" as="image" href="image/salon-glamour-nails-accueil-1200.webp" imagesrcset="image/salon-glamour-nails-accueil-800.webp 800w, image/salon-glamour-nails-accueil-1200.webp 1200w, image/salon-glamour-nails-accueil-1624.webp 1624w" imagesizes="100vw" fetchpriority="high">
-  <link rel="stylesheet" href="css/style.min.css?v=202610120021">
+  <link rel="stylesheet" href="css/style.min.css?v=202610120023">
 
   <!-- Données structurées : à compléter avec l'adresse et les horaires réels -->
   <script type="application/ld+json">
@@ -255,7 +257,7 @@
     <section class="reveal-frame" aria-label="Le salon Glamour Nails">
       <div class="reveal-frame__pin">
         <div class="reveal-frame__media" data-frame>
-          <div class="reveal-frame__img" role="img" aria-label="L'espace beauté des pieds du salon Glamour Nails" style="background-image:url(image/espace-beaute-des-pieds-glamour-nails.webp)"></div>
+          <div class="reveal-frame__img" role="img" aria-label="L'espace beauté des pieds du salon Glamour Nails" data-bg="image/espace-beaute-des-pieds-glamour-nails.webp"></div>
           <div class="reveal-frame__veil"></div>
           <blockquote class="reveal-frame__quote" data-frame-quote>
             <p>Prenez place,<br>on s'occupe du reste.</p>
@@ -1041,7 +1043,7 @@
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span></figcaption>
           </figure>
           <figure class="real real--video" data-real>
-            <video src="assets/realisations/video-ongles-glamour-nails-1.mp4" poster="assets/realisations/video-ongles-glamour-nails-1-poster.webp" width="480" height="797" muted loop playsinline preload="none" data-video></video>
+            <video data-src="assets/realisations/video-ongles-glamour-nails-1.mp4" data-poster="assets/realisations/video-ongles-glamour-nails-1-poster.webp" width="480" height="797" muted loop playsinline preload="none" data-video></video>
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span><span class="real__tag">Vidéo</span></figcaption>
           </figure>
           <figure class="real" data-real>
@@ -1061,7 +1063,7 @@
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span></figcaption>
           </figure>
           <figure class="real real--video" data-real>
-            <video src="assets/realisations/video-ongles-glamour-nails-2.mp4" poster="assets/realisations/video-ongles-glamour-nails-2-poster.webp" width="466" height="900" muted loop playsinline preload="none" data-video></video>
+            <video data-src="assets/realisations/video-ongles-glamour-nails-2.mp4" data-poster="assets/realisations/video-ongles-glamour-nails-2-poster.webp" width="466" height="900" muted loop playsinline preload="none" data-video></video>
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span><span class="real__tag">Vidéo</span></figcaption>
           </figure>
           <figure class="real" data-real>
@@ -1081,7 +1083,7 @@
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span></figcaption>
           </figure>
           <figure class="real real--video" data-real>
-            <video src="assets/realisations/video-ongles-glamour-nails-3.mp4" poster="assets/realisations/video-ongles-glamour-nails-3-poster.webp" width="480" height="854" muted loop playsinline preload="none" data-video></video>
+            <video data-src="assets/realisations/video-ongles-glamour-nails-3.mp4" data-poster="assets/realisations/video-ongles-glamour-nails-3-poster.webp" width="480" height="854" muted loop playsinline preload="none" data-video></video>
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span><span class="real__tag">Vidéo</span></figcaption>
           </figure>
           <figure class="real" data-real>
@@ -1101,7 +1103,7 @@
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span></figcaption>
           </figure>
           <figure class="real real--video" data-real>
-            <video src="assets/realisations/video-ongles-glamour-nails-4.mp4" poster="assets/realisations/video-ongles-glamour-nails-4-poster.webp" width="480" height="796" muted loop playsinline preload="none" data-video></video>
+            <video data-src="assets/realisations/video-ongles-glamour-nails-4.mp4" data-poster="assets/realisations/video-ongles-glamour-nails-4-poster.webp" width="480" height="796" muted loop playsinline preload="none" data-video></video>
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span><span class="real__tag">Vidéo</span></figcaption>
           </figure>
           <figure class="real" data-real>
@@ -1121,7 +1123,7 @@
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span></figcaption>
           </figure>
           <figure class="real real--video" data-real>
-            <video src="assets/realisations/video-ongles-glamour-nails-5.mp4" poster="assets/realisations/video-ongles-glamour-nails-5-poster.webp" width="464" height="832" muted loop playsinline preload="none" data-video></video>
+            <video data-src="assets/realisations/video-ongles-glamour-nails-5.mp4" data-poster="assets/realisations/video-ongles-glamour-nails-5-poster.webp" width="464" height="832" muted loop playsinline preload="none" data-video></video>
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span><span class="real__tag">Vidéo</span></figcaption>
           </figure>
           <figure class="real" data-real>
@@ -1141,7 +1143,7 @@
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span></figcaption>
           </figure>
           <figure class="real real--video" data-real>
-            <video src="assets/realisations/video-ongles-glamour-nails-6.mp4" poster="assets/realisations/video-ongles-glamour-nails-6-poster.webp" width="480" height="854" muted loop playsinline preload="none" data-video></video>
+            <video data-src="assets/realisations/video-ongles-glamour-nails-6.mp4" data-poster="assets/realisations/video-ongles-glamour-nails-6-poster.webp" width="480" height="854" muted loop playsinline preload="none" data-video></video>
             <figcaption><span class="real__who"><img src="image/logo-glamour-nails-96.webp" alt="" width="32" height="32" loading="lazy" decoding="async"><b>Glamour Nails</b></span><span class="real__tag">Vidéo</span></figcaption>
           </figure>
           <figure class="real" data-real>
@@ -1162,7 +1164,7 @@
 
     <!-- ============ CONTACT ============ -->
     <section class="contact section" id="contact">
-      <div class="fond" aria-hidden="true"><div class="fond__img" data-parallax data-parallax-start="-25" data-parallax-end="0" style="background-image:url(image/salon-glamour-nails-interieur.webp)"></div></div>
+      <div class="fond" aria-hidden="true"><div class="fond__img" data-parallax data-parallax-start="-25" data-parallax-end="0" data-bg="image/salon-glamour-nails-interieur.webp"></div></div>
       <div class="contact__veil" aria-hidden="true"></div>
       <div class="wrap contact__grid">
         <div>
@@ -1319,6 +1321,6 @@
   <script src="js/vendor/Observer.min.js" defer></script>
   <script src="js/vendor/SplitText.min.js" defer></script>
   <script src="js/vendor/lenis.min.js" defer></script>
-  <script src="js/main.min.js?v=202610120021" defer></script>
+  <script src="js/main.min.js?v=202610120023" defer></script>
 </body>
 </html>

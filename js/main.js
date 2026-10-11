@@ -180,6 +180,18 @@
     });
   })();
 
+  /* ---------- Fonds de section chargés à l'approche ---------- */
+  (() => {
+    const fonds = $$('[data-bg]');
+    const poser = (el) => { el.style.backgroundImage = `url(${el.dataset.bg})`; delete el.dataset.bg; };
+    if (!fonds.length) return;
+    if (!('IntersectionObserver' in window)) { fonds.forEach(poser); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { poser(en.target); io.unobserve(en.target); } });
+    }, { rootMargin: '900px 0px' });
+    fonds.forEach((el) => io.observe(el));
+  })();
+
   /* ---------- FAQ : ouverture animée ---------- */
   $$('.acc__item').forEach((item) => {
     const sum = $('summary', item);
@@ -343,16 +355,26 @@
     // Avis : le mur apparaît en douceur
     gsap.from('.gwall', { y: 60, autoAlpha: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.gwall', start: 'top 90%', once: true } });
 
-    // Réalisations : les vidéos se lancent (muettes) quand elles sont à l'écran
+    // Réalisations : vignette et vidéo ne se chargent qu'à l'approche,
+    // puis la vidéo se lance (muette) quand elle est à l'écran
     const vids = $$('[data-video]');
     if (vids.length && 'IntersectionObserver' in window) {
+      const ioPrep = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const v = en.target;
+          if (v.dataset.poster) { v.poster = v.dataset.poster; delete v.dataset.poster; }
+          if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; }
+          ioPrep.unobserve(v);
+        });
+      }, { rootMargin: '600px 0px' });
       const io = new IntersectionObserver((entries) => {
         entries.forEach((en) => {
           const v = en.target;
           if (en.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); }
         });
       }, { threshold: 0.35 });
-      vids.forEach((v) => io.observe(v));
+      vids.forEach((v) => { ioPrep.observe(v); io.observe(v); });
     }
 
     // Réalisations : « Voir plus » déplie toute la grille
