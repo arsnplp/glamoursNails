@@ -197,9 +197,6 @@
     });
   });
 
-  /* ---------- Lien mentions légales (à brancher) ---------- */
-  $('[data-legal]')?.addEventListener('click', (e) => e.preventDefault());
-
   /* ---------- Éventail & pile ---------- */
   initFan();
 
