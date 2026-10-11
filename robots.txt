@@ -1,3 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /deploy/
+Disallow: /image/originaux/
+
 Sitemap: https://glamour-nails.fr/sitemap.xml

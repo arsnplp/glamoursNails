@@ -180,6 +180,18 @@
     });
   })();
 
+  /* ---------- Fonds de section chargés à l'approche ---------- */
+  (() => {
+    const fonds = $$('[data-bg]');
+    const poser = (el) => { el.style.backgroundImage = `url(${el.dataset.bg})`; delete el.dataset.bg; };
+    if (!fonds.length) return;
+    if (!('IntersectionObserver' in window)) { fonds.forEach(poser); return; }
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { poser(en.target); io.unobserve(en.target); } });
+    }, { rootMargin: '900px 0px' });
+    fonds.forEach((el) => io.observe(el));
+  })();
+
   /* ---------- FAQ : ouverture animée ---------- */
   $$('.acc__item').forEach((item) => {
     const sum = $('summary', item);
@@ -197,9 +209,6 @@
     });
   });
 
-  /* ---------- Lien mentions légales (à brancher) ---------- */
-  $('[data-legal]')?.addEventListener('click', (e) => e.preventDefault());
-
   /* ---------- Éventail & pile ---------- */
   initFan();
 
@@ -209,7 +218,7 @@
   const entreeHero = () => {
     const tl = gsap.timeline();
     if (!reduit) {
-      heroSplit = new SplitText(heroLignes, { type: 'lines,chars', mask: 'lines', linesClass: 'line' });
+      heroSplit = new SplitText(heroLignes, { type: 'lines,chars', mask: 'lines', linesClass: 'line', aria: 'none' });
       tl.from('.hero__img', { scale: 1.25, duration: 2.2, ease: 'expo.out' }, 0)
         .from(heroSplit.lines, { yPercent: 120, duration: 1.3, stagger: 0.12, ease: 'expo.out' }, 0.15)
         .from('[data-hero-fade]', { y: 26, autoAlpha: 0, duration: 1, stagger: 0.1, ease: 'power3.out' }, 0.55)
@@ -236,16 +245,16 @@
     demarrer();
   } else {
     const heroImg = new Image();
-    heroImg.src = 'image/header3.webp';
+    heroImg.src = 'image/salon-glamour-nails-accueil-1200.webp';
     const pret = Promise.all([
       document.fonts ? document.fonts.ready : Promise.resolve(),
       heroImg.decode ? heroImg.decode().catch(() => {}) : Promise.resolve(),
-      new Promise((r) => setTimeout(r, 1300)),
+      new Promise((r) => setTimeout(r, 700)),
     ]);
     const n = { v: 0 };
-    const montee = gsap.to(n, { v: 90, duration: 1.3, ease: 'power2.out', onUpdate: () => { compteur.textContent = Math.round(n.v); } });
+    const montee = gsap.to(n, { v: 90, duration: 0.7, ease: 'power2.out', onUpdate: () => { compteur.textContent = Math.round(n.v); } });
     // Filet de sécurité : le site s'ouvre même si une ressource traîne
-    const delai = new Promise((r) => setTimeout(r, 4000));
+    const delai = new Promise((r) => setTimeout(r, 2500));
     Promise.race([pret, delai]).then(() => {
       montee.kill();
       gsap.timeline()
@@ -279,7 +288,7 @@
     // Grands titres : chaque ligne monte depuis son masque
     $$('[data-lines]').forEach((titre) => {
       SplitText.create(titre, {
-        type: 'lines', mask: 'lines', linesClass: 'line', autoSplit: true,
+        type: 'lines', mask: 'lines', linesClass: 'line', autoSplit: true, aria: 'none',
         onSplit: (s) => gsap.from(s.lines, {
           yPercent: 115, duration: 1.2, stagger: 0.12, ease: 'expo.out',
           scrollTrigger: { trigger: titre, start: 'top 88%', once: true },
@@ -296,7 +305,7 @@
     // Manifeste : la phrase s'illumine lettre après lettre
     $$('[data-highlight]').forEach((p) => {
       SplitText.create(p, {
-        type: 'words,chars', autoSplit: true,
+        type: 'words,chars', autoSplit: true, aria: 'none',
         onSplit: (s) => gsap.timeline({
           scrollTrigger: { trigger: p, start: 'top 82%', end: 'bottom 45%', scrub: true },
         }).from(s.chars, { opacity: 0.12, stagger: 0.3, ease: 'none' }),
@@ -310,7 +319,7 @@
       const mm = gsap.matchMedia();
       mm.add({ petit: '(max-width: 860px)', grand: '(min-width: 861px)' }, (ctx) => {
         const depart = ctx.conditions.petit ? 'inset(10% 8% 10% 8% round 20px)' : 'inset(18% 22% 18% 22% round 28px)';
-        const q = SplitText.create('[data-frame-quote] p', { type: 'lines', mask: 'lines' });
+        const q = SplitText.create('[data-frame-quote] p', { type: 'lines', mask: 'lines', aria: 'none' });
         const tl = gsap.timeline({
           scrollTrigger: { trigger: '.reveal-frame', start: 'top top', end: '+=130%', scrub: 1, pin: '.reveal-frame__pin', anticipatePin: 1 },
         });
@@ -346,16 +355,26 @@
     // Avis : le mur apparaît en douceur
     gsap.from('.gwall', { y: 60, autoAlpha: 0, duration: 1.2, ease: 'power3.out', scrollTrigger: { trigger: '.gwall', start: 'top 90%', once: true } });
 
-    // Réalisations : les vidéos se lancent (muettes) quand elles sont à l'écran
+    // Réalisations : vignette et vidéo ne se chargent qu'à l'approche,
+    // puis la vidéo se lance (muette) quand elle est à l'écran
     const vids = $$('[data-video]');
     if (vids.length && 'IntersectionObserver' in window) {
+      const ioPrep = new IntersectionObserver((entries) => {
+        entries.forEach((en) => {
+          if (!en.isIntersecting) return;
+          const v = en.target;
+          if (v.dataset.poster) { v.poster = v.dataset.poster; delete v.dataset.poster; }
+          if (v.dataset.src) { v.src = v.dataset.src; delete v.dataset.src; }
+          ioPrep.unobserve(v);
+        });
+      }, { rootMargin: '600px 0px' });
       const io = new IntersectionObserver((entries) => {
         entries.forEach((en) => {
           const v = en.target;
           if (en.isIntersecting) { v.play().catch(() => {}); } else { v.pause(); }
         });
       }, { threshold: 0.35 });
-      vids.forEach((v) => io.observe(v));
+      vids.forEach((v) => { ioPrep.observe(v); io.observe(v); });
     }
 
     // Réalisations : « Voir plus » déplie toute la grille
