@@ -321,7 +321,8 @@
         const depart = ctx.conditions.petit ? 'inset(10% 8% 10% 8% round 20px)' : 'inset(18% 22% 18% 22% round 28px)';
         const q = SplitText.create('[data-frame-quote] p', { type: 'lines', mask: 'lines', aria: 'none' });
         const tl = gsap.timeline({
-          scrollTrigger: { trigger: '.reveal-frame', start: 'top top', end: '+=130%', scrub: 1, pin: '.reveal-frame__pin', anticipatePin: 1 },
+          // Sur téléphone, l'ouverture se joue sur un demi-écran de défilement : plus vive au pouce
+          scrollTrigger: { trigger: '.reveal-frame', start: 'top top', end: ctx.conditions.petit ? '+=55%' : '+=130%', scrub: ctx.conditions.petit ? 0.3 : 1, pin: '.reveal-frame__pin', anticipatePin: 1 },
         });
         tl.fromTo(media, { clipPath: depart }, { clipPath: 'inset(0% 0% 0% 0% round 0px)', ease: 'none', duration: 1 }, 0)
           .fromTo('.reveal-frame__img', { scale: ctx.conditions.petit ? 1.05 : 1.2 }, { scale: 1, ease: 'none', duration: 1 }, 0)

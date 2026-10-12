@@ -883,6 +883,8 @@ svg { display: block; }
   .only-desktop { display: none !important; }
   .only-mobile { display: inline; }
   .eyebrow, .kicker { font-size: 11px; letter-spacing: .2em; }
+  /* Accueil : cadrage vers la droite pour garder la main et les ongles à l'écran */
+  .hero__img { object-position: 84% 35%; }
   .sec-head { margin-bottom: 36px; }
   .sec-lead { margin-top: 18px; }
   .manifeste__sign { font-size: 11px; letter-spacing: .14em; line-height: 1.8; }
