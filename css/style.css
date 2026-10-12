@@ -866,7 +866,7 @@ svg { display: block; }
 @media (max-width: 1080px) {
   .nav { display: none; }
   .burger { display: block; }
-  .fan { --fan-w: 340px; --fan-h: 460px; }
+  .fan { --fan-w: 270px; --fan-h: 430px; --fan-x: 260px; }
 }
 @media (max-width: 860px) {
   .domaine, .faq__grid, .contact__grid { grid-template-columns: 1fr; }
@@ -902,7 +902,7 @@ svg { display: block; }
   .scroll-hint { display: none; }
   .hero__facts strong { font-size: 28px; }
   .hero__actions .btn { flex: 1 1 auto; justify-content: center; }
-  .fan { --fan-w: min(320px, calc(100vw - 48px)); --fan-h: 420px; }
+  .fan { --fan-w: 250px; --fan-h: 400px; --fan-x: 150px; }
   .fan__inner { padding: 24px 22px; }
   .fan__top { margin-bottom: 30px; }
   .fan__card h3 { font-size: 24px; }

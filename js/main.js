@@ -487,9 +487,6 @@
   function initFan() {
     const root = $('[data-fan]');
     if (!root) return;
-    // Sur téléphone et tablette, l'éventail laisse place à la pile au
-    // défilement (même mécanique que Jolis Nails sur mobile).
-    if (window.matchMedia('(max-width: 860px)').matches) { initEngStack(root); return; }
     const stage = $('.fan__stage', root);
     const cards = $$('.fan__card', stage);
     const n = cards.length;
