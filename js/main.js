@@ -12,6 +12,19 @@
   const annee = $('[data-year]');
   if (annee) annee.textContent = new Date().getFullYear();
 
+  // Module Planity chargé uniquement au clic (aucun cookie tiers avant action de l'utilisateur)
+  $$('[data-planity-embed]').forEach((box) => {
+    $('[data-planity-load]', box)?.addEventListener('click', () => {
+      const f = document.createElement('iframe');
+      f.className = 'planity__frame';
+      f.src = box.dataset.src;
+      f.title = 'Réservation en ligne Glamour Nails sur Planity';
+      f.setAttribute('referrerpolicy', 'no-referrer-when-downgrade');
+      box.replaceWith(f);
+      f.focus();
+    });
+  });
+
   // Sans GSAP (CDN bloqué), le site reste lisible : on retire juste le loader.
   if (!hasGsap) {
     document.body.classList.remove('is-loading');

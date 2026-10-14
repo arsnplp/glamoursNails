@@ -571,9 +571,13 @@ svg { display: block; }
 }
 .planity__dot { width: 10px; height: 10px; border-radius: 50%; background: rgba(12, 11, 10, .18); }
 .planity__url { margin-left: 10px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12.5px; letter-spacing: .02em; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.planity__open { margin-left: auto; text-decoration: none; color: var(--accent); font-weight: 500; white-space: nowrap; }
+.planity__open { margin-left: auto; text-decoration: none; color: #1d724d; font-weight: 500; white-space: nowrap; }
 .planity__open:hover { text-decoration: underline; }
 .planity__frame { display: block; width: 100%; height: min(82vh, 900px); border: 0; background: #fff; }
+.planity__consent { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; min-height: 320px; padding: 48px 24px; text-align: center; color: var(--texte-sombre); }
+.planity__consent p { max-width: 520px; margin: 0; }
+.planity__alt { font-size: 14px; }
+.planity__alt a { color: #1d724d; }
 @media (max-width: 640px) {
   .planity__url { display: none; }
   .planity__frame { height: 78vh; }
